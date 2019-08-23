@@ -2,24 +2,26 @@ import 'package:flutter_web/material.dart';
 import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
+import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/app_icons.dart';
 import 'package:jfkdev/ux/models/ux_models.dart';
+import 'package:jfkdev/ux/widgets/animatable.dart';
 import 'package:jfkdev/ux/widgets/highlight_card.dart';
-import 'package:jfkdev/ux/widgets/widget_utils.dart';
 
-class HighlightsList extends StatefulWidget {
+class HighlightsList extends AnimatableStatefulWidget {
   const HighlightsList({
     Key key,
-    this.animation,
-  }) : super(key: key);
-
-  final Animation<double> animation;
+    Animation<double> animation,
+  }) : super(
+          key: key,
+          animation: animation,
+        );
 
   @override
   _HighlightsListState createState() => _HighlightsListState();
 }
 
-class _HighlightsListState extends State<HighlightsList> {
+class _HighlightsListState extends AnimatableState<HighlightsList> {
   final welcomeScreenHighlights = <ContentViewModel>[
     ContentViewModel(
       icon: AppIcons.code,
@@ -40,32 +42,14 @@ class _HighlightsListState extends State<HighlightsList> {
 
   final _highlightAnimations = <Animation<double>>[];
 
-  Animation<double> get _baseAnimation => widget.animation ?? stoppedAnimationEnd;
-
-  Interval getAnimationInterval(int index) {
-    final max = welcomeScreenHighlights.length;
-    final unit = 1.0 / (max + 1);
-    final relativeStart = index * unit;
-
-    final start = relativeStart;
-    final end = valueBetween(start + unit + 0.2, max: 1.0);
-
-    return Interval(
-      start,
-      end,
-      curve: AppTheme.animationCurveDefault,
-    );
-  }
-
   @override
   void initState() {
     super.initState();
-    for (int i = 0; i < welcomeScreenHighlights.length; i++) {
-      _highlightAnimations.add(CurvedAnimation(
-        parent: _baseAnimation,
-        curve: getAnimationInterval(i),
-      ));
-    }
+    _highlightAnimations.addAll(divideAnimationAlongItems(
+      welcomeScreenHighlights,
+      parent: baseAnimation,
+      overlapStart: 1.0,
+    ));
   }
 
   @override

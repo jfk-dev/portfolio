@@ -3,6 +3,7 @@ import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/ux/app_icons.dart';
 import 'package:jfkdev/ux/sections/welcome/introduction_header.dart';
 import 'package:jfkdev/ux/sections/welcome/highlights_list.dart';
+import 'package:jfkdev/ux/sections/welcome/socials_row.dart';
 import 'package:jfkdev/ux/widgets/fill_screen.dart';
 import 'package:jfkdev/ux/widgets/wave/config.dart';
 import 'package:jfkdev/ux/widgets/wave/wave.dart';
@@ -83,7 +84,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
               ),
               Expanded(
                 flex: 1,
-                child: Row(),
+                child: SocialsRow(animation: _socialsAnimation),
               ),
               Spacer(),
               Flexible(

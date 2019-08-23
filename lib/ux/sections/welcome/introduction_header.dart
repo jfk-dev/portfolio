@@ -6,35 +6,35 @@ import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/app_images.dart';
+import 'package:jfkdev/ux/widgets/animatable.dart';
 import 'package:jfkdev/ux/widgets/widget_utils.dart';
 
-class IntroductionHeader extends StatefulWidget {
+class IntroductionHeader extends AnimatableStatefulWidget {
   const IntroductionHeader({
     Key key,
-    this.animation,
-  }) : super(key: key);
-
-  final Animation<double> animation;
+    Animation<double> animation,
+  }) : super(
+          key: key,
+          animation: animation,
+        );
 
   @override
   _IntroductionHeaderState createState() => _IntroductionHeaderState();
 }
 
-class _IntroductionHeaderState extends State<IntroductionHeader> with SingleTickerProviderStateMixin {
+class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
   Animation<double> _iconTranslationAnimation;
   Animation<double> _titleAnimation;
-
-  Animation<double> get _baseAnimation => widget.animation ?? stoppedAnimationEnd;
 
   @override
   void initState() {
     super.initState();
     _iconTranslationAnimation = CurvedAnimation(
-      parent: _baseAnimation,
+      parent: baseAnimation,
       curve: Interval(0.0, 0.6, curve: AppTheme.animationCurveDefault),
     );
     _titleAnimation = CurvedAnimation(
-      parent: _baseAnimation,
+      parent: baseAnimation,
       curve: Interval(0.4, 1.0, curve: AppTheme.animationCurveDefault),
     );
   }

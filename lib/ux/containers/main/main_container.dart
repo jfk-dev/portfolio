@@ -42,7 +42,7 @@ class _MainContainerState extends State<MainContainer> {
       physics: const BouncingScrollPhysics(),
       children: <Widget>[
         WelcomeSection(showDownArrow: _isScrolledToTop),
-        AboutSection(),
+        // AboutSection(),
       ],
     );
   }
