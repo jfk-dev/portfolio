@@ -20,7 +20,7 @@ class IntroductionHeader extends StatefulWidget {
 }
 
 class _IntroductionHeaderState extends State<IntroductionHeader> with SingleTickerProviderStateMixin {
-  Animation<double> _iconAnimation;
+  Animation<double> _iconTranslationAnimation;
   Animation<double> _titleAnimation;
 
   Animation<double> get _baseAnimation => widget.animation ?? stoppedAnimationEnd;
@@ -28,7 +28,7 @@ class _IntroductionHeaderState extends State<IntroductionHeader> with SingleTick
   @override
   void initState() {
     super.initState();
-    _iconAnimation = CurvedAnimation(
+    _iconTranslationAnimation = CurvedAnimation(
       parent: _baseAnimation,
       curve: Interval(0.0, 0.6, curve: AppTheme.animationCurveDefault),
     );
@@ -44,13 +44,17 @@ class _IntroductionHeaderState extends State<IntroductionHeader> with SingleTick
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         AnimatedBuilder(
-          animation: _iconAnimation,
+          animation: _iconTranslationAnimation,
           builder: (context, child) {
-            return FractionalTranslation(
-              translation: Offset(0, 0.5 - (_iconAnimation.value * 0.5)),
-              child: Opacity(
-                opacity: valueBetween(_iconAnimation.value + 0.7, max: 1),
-                child: child,
+            return Transform.scale(
+              scale: 1.4 - (_titleAnimation.value * 0.4),
+              alignment: Alignment.topCenter,
+              child: FractionalTranslation(
+                translation: Offset(0, 0.5 - (_iconTranslationAnimation.value * 0.5)),
+                child: Opacity(
+                  opacity: valueBetween(_iconTranslationAnimation.value, max: 1),
+                  child: child,
+                ),
               ),
             );
           },
