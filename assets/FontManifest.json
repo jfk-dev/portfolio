@@ -1,0 +1,46 @@
+[
+  {
+    "family": "Fira Code",
+    "fonts": [
+      {
+        "asset": "assets/fonts/Fira Code/FiraCode-Light.ttf",
+        "weight": 300
+      },
+      {
+        "asset": "assets/fonts/Fira Code/FiraCode-Regular.ttf",
+        "weight": 400
+      },
+      {
+        "asset": "assets/fonts/Fira Code/FiraCode-Medium.ttf",
+        "weight": 500
+      },
+      {
+        "asset": "assets/fonts/Fira Code/FiraCode-Bold.ttf",
+        "weight": 700
+      }
+    ]
+  },
+  {
+    "family": "Product Sans",
+    "fonts": [
+      {
+        "asset": "assets/fonts/Product Sans/Product Sans Regular.ttf",
+        "weight": 400
+      },
+      {
+        "asset": "assets/fonts/Product Sans/Product Sans Italic.ttf",
+        "weight": 400,
+        "style": "italic"
+      },
+      {
+        "asset": "assets/fonts/Product Sans/Product Sans-Bold.ttf",
+        "weight": 700
+      },
+      {
+        "asset": "assets/fonts/Product Sans/Product Sans Bold Italic.ttf",
+        "weight": 700,
+        "style": "italic"
+      }
+    ]
+  }
+]
