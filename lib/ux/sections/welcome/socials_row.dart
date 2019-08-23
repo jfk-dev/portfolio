@@ -28,18 +28,37 @@ class _SocialsRowState extends AnimatableState<SocialsRow> {
       personalSocialMediaData,
       parent: baseAnimation,
       overlapStart: 1.0,
-      // overlapEnd: 0.5, //FIXME: Try out different parameters.
+      // overlapEnd: 1.0,
     ));
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO(jeroen-meijer): Add animatedbuilders.
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        JfkIconButton(
-          model: personalSocialMediaData.first,
-        ),
+        for (int i = 0; i < personalSocialMediaData.length; i++)
+          AnimatedBuilder(
+            animation: _personalSocialsAnimations.elementAt(i),
+            builder: (context, child) {
+              final animation = _personalSocialsAnimations.elementAt(i);
+              return Transform.translate(
+                offset: Offset(0.0, 150 - (animation.value * 150)),
+                child: Opacity(
+                  opacity: animation.value,
+                  child: child,
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: JfkIconButton(
+                model: personalSocialMediaData.elementAt(i),
+                size: 32,
+              ),
+            ),
+          )
       ],
     );
   }

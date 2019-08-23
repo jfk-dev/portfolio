@@ -49,7 +49,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
     );
     _downArrowAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.8, 1.0),
+      curve: Interval(0.65, 1.0),
     );
   }
 

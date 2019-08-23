@@ -9,8 +9,8 @@ class JfkIconButton extends StatefulWidget {
   const JfkIconButton({
     Key key,
     @required this.model,
-    this.size = 52.0,
-    this.color = AppTheme.colorGreen,
+    this.size,
+    this.color = Colors.white,
     // this.showTitleOnHover = false,
     this.onTap,
   }) : super(key: key);
@@ -62,7 +62,7 @@ class _JfkIconButtonState extends State<JfkIconButton> {
       child: GestureDetector(
         onTap: _onTap,
         child: AnimatedOpacity(
-          duration: const Duration(milliseconds: 50),
+          duration: const Duration(milliseconds: 150),
           opacity: _isHovering ? 1.0 : 0.4,
           child: Icon(
             widget.model.icon,
