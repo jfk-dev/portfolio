@@ -5,10 +5,10 @@ import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/ux/containers/main/main_container.dart';
 
-void main() => runApp(JfkDev());
+void main() => runApp(JfkDevApp());
 
-class JfkDev extends StatelessWidget {
-  JfkDev() {
+class JfkDevApp extends StatelessWidget {
+  JfkDevApp() {
     final urlParameters = getCurrentUrlParameters();
 
     GetIt.instance.registerSingleton<Localization>(AppLocalizations.fromLocaleId(urlParameters['lang']));

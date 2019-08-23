@@ -4,10 +4,13 @@ class FillScreen extends StatelessWidget {
   const FillScreen({
     Key key,
     this.color,
+    this.gradient,
     @required this.child,
-  }) : super(key: key);
+  })  : assert(color == null || gradient == null, 'Either provide only a color or a gradient.'),
+        super(key: key);
 
   final Color color;
+  final Gradient gradient;
   final Widget child;
 
   @override
@@ -15,7 +18,10 @@ class FillScreen extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      color: color,
+      decoration: BoxDecoration(
+        color: color,
+        gradient: gradient,
+      ),
       child: child,
     );
   }

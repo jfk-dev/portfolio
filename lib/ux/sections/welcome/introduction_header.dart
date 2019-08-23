@@ -5,43 +5,37 @@ import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
+import 'package:jfkdev/ux/widgets/widget_utils.dart';
 
 class IntroductionHeader extends StatefulWidget {
+  const IntroductionHeader({
+    Key key,
+    this.animation,
+  }) : super(key: key);
+
+  final Animation<double> animation;
+
   @override
   _IntroductionHeaderState createState() => _IntroductionHeaderState();
 }
 
 class _IntroductionHeaderState extends State<IntroductionHeader> with SingleTickerProviderStateMixin {
-  AnimationController _baseAnimationController;
   Animation<double> _iconAnimation;
   Animation<double> _titleAnimation;
-  Animation<double> _talentsAnimation;
+
+  Animation<double> get _baseAnimation => widget.animation ?? stoppedAnimationEnd;
 
   @override
   void initState() {
     super.initState();
-    _baseAnimationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 4000),
-    )..forward();
     _iconAnimation = CurvedAnimation(
-      parent: _baseAnimationController,
-      curve: Interval(0.0, 0.3, curve: Curves.fastLinearToSlowEaseIn),
+      parent: _baseAnimation,
+      curve: Interval(0.0, 0.6, curve: AppTheme.animationCurveDefault),
     );
     _titleAnimation = CurvedAnimation(
-      parent: _baseAnimationController,
-      curve: Interval(0.2, 0.5, curve: Curves.fastLinearToSlowEaseIn),
+      parent: _baseAnimation,
+      curve: Interval(0.4, 1.0, curve: AppTheme.animationCurveDefault),
     );
-    _talentsAnimation = CurvedAnimation(
-      parent: _baseAnimationController,
-      curve: Interval(0.3, 0.5, curve: Curves.fastLinearToSlowEaseIn),
-    );
-  }
-
-  @override
-  void dispose() {
-    _baseAnimationController.dispose();
-    super.dispose();
   }
 
   @override
@@ -74,7 +68,7 @@ class _IntroductionHeaderState extends State<IntroductionHeader> with SingleTick
             return SizedBox(
               width: _titleAnimation.value * 550,
               child: FittedBox(
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.contain,
                 alignment: Alignment.centerLeft,
                 child: Transform(
                   transform: Matrix4.identity()

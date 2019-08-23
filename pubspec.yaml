@@ -39,7 +39,10 @@ flutter:
         - asset: assets/fonts/Product Sans/Product Sans Bold Italic.ttf
           weight: 700
           style: italic
-
+    - family:  AppIcons
+      fonts:
+        - asset: assets/fontsAppIcons/AppIcons.ttf
+        
 dependency_overrides:
   flutter_web:
     git:

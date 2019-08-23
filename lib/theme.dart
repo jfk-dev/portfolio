@@ -17,12 +17,22 @@ class AppTheme {
   static const colorTextPrimary = Colors.white;
   static const colorTextSecondary = Color(0xFF6E7380);
   static const colorTextTernary = Color(0xFF4A5574);
-  
+
   static const colorBackgroundLight = Color(0xFF23222D);
   static const colorBackgroundDark = Color(0xFF15161E);
 
   static const colorRed = Color(0xFFF22D55);
   static const colorGreen = Color(0xFF29FFCA);
+
+  static const colorDefaultGradientOne = Colors.cyan;
+  static const colorDefaultGradientTwo = colorGreen;
+  static final gradientDefault = LinearGradient(
+    colors: [colorDefaultGradientOne, colorDefaultGradientTwo],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
+
+  static const animationCurveDefault = Curves.fastLinearToSlowEaseIn;
 
   static ThemeData theme() {
     return ThemeData(
