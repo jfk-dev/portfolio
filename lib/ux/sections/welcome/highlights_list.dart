@@ -20,18 +20,18 @@ class HighlightsList extends StatefulWidget {
 }
 
 class _HighlightsListState extends State<HighlightsList> {
-  final welcomeScreenHighlights = <RichIconModel>[
-    RichIconModel(
+  final welcomeScreenHighlights = <ContentViewModel>[
+    ContentViewModel(
       icon: AppIcons.code,
       title: AppLocalizations.instance.highlightSoftwareDeveloperTitle,
       description: AppLocalizations.instance.highlightSoftwareDeveloperDescription,
     ),
-    RichIconModel(
+    ContentViewModel(
       icon: AppIcons.heart,
       title: AppLocalizations.instance.highlightOpenSourceContributorTitle,
       description: AppLocalizations.instance.highlightOpenSourceContributorDescription,
     ),
-    RichIconModel(
+    ContentViewModel(
       icon: AppIcons.chat,
       title: AppLocalizations.instance.highlightSpeakerTitle,
       description: AppLocalizations.instance.highlightSpeakerDescription,

@@ -9,7 +9,7 @@ class HighlightCard extends StatelessWidget {
     @required this.model,
   }) : super(key: key);
 
-  final RichIconModel model;
+  final ContentViewModel model;
 
   @override
   Widget build(BuildContext context) {
