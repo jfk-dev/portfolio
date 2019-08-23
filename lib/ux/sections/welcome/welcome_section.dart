@@ -2,7 +2,7 @@ import 'package:flutter_web/material.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/ux/app_icons.dart';
 import 'package:jfkdev/ux/sections/welcome/introduction_header.dart';
-import 'package:jfkdev/ux/sections/welcome/talents_list.dart';
+import 'package:jfkdev/ux/sections/welcome/highlights_list.dart';
 import 'package:jfkdev/ux/widgets/fill_screen.dart';
 import 'package:jfkdev/ux/widgets/wave/config.dart';
 import 'package:jfkdev/ux/widgets/wave/wave.dart';
@@ -23,7 +23,8 @@ class WelcomeSection extends StatefulWidget {
 class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProviderStateMixin {
   AnimationController _baseAnimation;
   Animation<double> _headerAnimation;
-  Animation<double> _talentsAnimation;
+  Animation<double> _highlightsAnimation;
+  Animation<double> _socialsAnimation;
   Animation<double> _downArrowAnimation;
 
   @override
@@ -37,13 +38,17 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
       parent: _baseAnimation,
       curve: Interval(0.0, 0.8),
     );
-    _talentsAnimation = CurvedAnimation(
+    _highlightsAnimation = CurvedAnimation(
       parent: _baseAnimation,
       curve: Interval(0.4, 0.8),
     );
+    _socialsAnimation = CurvedAnimation(
+      parent: _baseAnimation,
+      curve: Interval(0.6, 0.8),
+    );
     _downArrowAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.7, 1.0),
+      curve: Interval(0.8, 1.0),
     );
   }
 
@@ -52,10 +57,15 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
     return FillScreen(
       child: Stack(
         children: <Widget>[
+          // FIXME: Temporary fix for bug with text rendering in `HighlightsList`.
+          Offstage(
+            offstage: true,
+            child: HighlightsList(animation: _highlightsAnimation),
+          ),
           Column(
             children: <Widget>[
               verticalMargin32,
-              Flexible(
+              Expanded(
                 flex: 2,
                 child: FittedBox(
                   fit: BoxFit.contain,
@@ -66,9 +76,16 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
                 ),
               ),
               Expanded(
-                flex: 4,
-                child: TalentsList(animation: _talentsAnimation),
+                flex: 2,
+                child: Center(
+                  child: HighlightsList(animation: _highlightsAnimation),
+                ),
               ),
+              Expanded(
+                flex: 1,
+                child: Row(),
+              ),
+              Spacer(),
               Flexible(
                 flex: 2,
                 child: WaveWidget(

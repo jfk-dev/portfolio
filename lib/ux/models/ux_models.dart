@@ -1,16 +1,16 @@
 import 'package:flutter_web/widgets.dart';
 
-class TalentCardModel {
-  const TalentCardModel({
+class RichIconModel {
+  const RichIconModel({
     this.title,
-    this.content,
+    this.description,
     this.icon,
   }) : assert(
-          title != null || content != null || icon != null,
+          title != null || description != null || icon != null,
           'At least one field must be provided.',
         );
 
   final String title;
-  final String content;
+  final String description;
   final IconData icon;
 }

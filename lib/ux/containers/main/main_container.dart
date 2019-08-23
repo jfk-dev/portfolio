@@ -10,7 +10,10 @@ class MainContainer extends StatefulWidget {
 class _MainContainerState extends State<MainContainer> {
   final ScrollController _scrollController = ScrollController();
 
-  bool _showDownArrow = true;
+  bool _isScrolledToTop = true;
+
+  double get _amountOfPagesScrolled =>
+      _scrollController.hasClients ? _scrollController.offset / MediaQuery.of(context).size.height : 0;
 
   @override
   void initState() {
@@ -21,9 +24,15 @@ class _MainContainerState extends State<MainContainer> {
   }
 
   void _onScrollPositionChanged() {
-    setState(() {
-      _showDownArrow = _scrollController.offset.floor() == 0;
-    });
+    if (_amountOfPagesScrolled == 0 && _isScrolledToTop == false) {
+      setState(() {
+        _isScrolledToTop = true;
+      });
+    } else if (_amountOfPagesScrolled != 0 && _isScrolledToTop == true) {
+      setState(() {
+        _isScrolledToTop = false;
+      });
+    }
   }
 
   @override
@@ -32,7 +41,7 @@ class _MainContainerState extends State<MainContainer> {
       controller: _scrollController,
       physics: const BouncingScrollPhysics(),
       children: <Widget>[
-        WelcomeSection(showDownArrow: _showDownArrow),
+        WelcomeSection(showDownArrow: _isScrolledToTop),
         AboutSection(),
       ],
     );

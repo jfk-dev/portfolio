@@ -15,8 +15,8 @@ class AppTheme {
   static const fontWeightBold = FontWeight.w700;
 
   static const colorTextPrimary = Colors.white;
-  static const colorTextSecondary = Color(0xFF6E7380);
-  static const colorTextTernary = Color(0xFF4A5574);
+  static const colorTextSecondary = Color(0xFFB7B9C0);
+  static const colorTextTernary = Color(0xFF6E7380);
 
   static const colorBackgroundLight = Color(0xFF23222D);
   static const colorBackgroundDark = Color(0xFF15161E);

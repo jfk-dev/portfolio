@@ -5,6 +5,7 @@ import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
+import 'package:jfkdev/ux/app_images.dart';
 import 'package:jfkdev/ux/widgets/widget_utils.dart';
 
 class IntroductionHeader extends StatefulWidget {
@@ -61,8 +62,9 @@ class _IntroductionHeaderState extends State<IntroductionHeader> with SingleTick
           child: Padding(
             padding: const EdgeInsets.only(right: 32),
             child: CircleAvatar(
-              backgroundColor: AppTheme.colorGreen,
               radius: 164,
+              backgroundColor: Colors.transparent,
+              backgroundImage: AppImages.profilePicture,
             ),
           ),
         ),

@@ -36,6 +36,15 @@ abstract class Localization {
   String get greetingEvening => 'Good evening';
   String get iAm => "I'm";
   String get introduction => '$iAm $commonName';
+
+  String get highlightSoftwareDeveloperTitle => 'Software Developer';
+  String get highlightSoftwareDeveloperDescription => 'Flutter, TypeScript and more.';
+
+  String get highlightOpenSourceContributorTitle => 'Open Source Contributor';
+  String get highlightOpenSourceContributorDescription => 'and Flutter Community administrator.';
+
+  String get highlightSpeakerTitle => 'Speaker';
+  String get highlightSpeakerDescription => 'Available for talks.';
 }
 
 class LocalizationEn extends Localization {
@@ -62,4 +71,19 @@ class LocalizationNl extends Localization {
   String get greetingEvening => 'Goedenavond';
   @override
   String get iAm => 'Ik ben';
+
+  @override
+    String get highlightSoftwareDeveloperTitle => 'Software Ontwikkelaar';
+  @override
+  String get highlightSoftwareDeveloperDescription => 'Flutter, TypeScript en meer.';
+
+  @override
+  String get highlightOpenSourceContributorTitle => 'Werkt Open Source';
+  @override
+  String get highlightOpenSourceContributorDescription => 'in de Flutter Community.';
+
+  @override
+  String get highlightSpeakerTitle => 'Spreker';
+  @override
+  String get highlightSpeakerDescription => 'Beschikbaar voor lectures.';
 }
