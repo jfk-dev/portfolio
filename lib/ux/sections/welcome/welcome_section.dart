@@ -37,15 +37,15 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
     )..forward();
     _headerAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.0, 0.8),
+      curve: Interval(0.0, 0.7),
     );
     _highlightsAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.4, 0.8),
+      curve: Interval(0.35, 0.7),
     );
     _socialsAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.6, 0.8),
+      curve: Interval(0.45, 1.0),
     );
     _downArrowAnimation = CurvedAnimation(
       parent: _baseAnimation,

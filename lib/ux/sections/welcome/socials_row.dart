@@ -1,4 +1,5 @@
 import 'package:flutter_web/material.dart';
+import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/models/ux_data.dart';
 import 'package:jfkdev/ux/widgets/animatable.dart';
@@ -32,6 +33,10 @@ class _SocialsRowState extends AnimatableState<SocialsRow> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    // TODO(jeroen-meijer): Add animatedbuilders.
+    return IconButton(
+      icon: Icon(personalSocialMediaData.first.icon),
+      onPressed: () => openUrl(personalSocialMediaData.first.url),
+    ); //FIXME: Implement properly.
   }
 }

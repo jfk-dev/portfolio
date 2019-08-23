@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 import 'dart:js' as js;
 
 Map<String, String> getCurrentUrlParameters() {
@@ -12,7 +13,9 @@ String getBrowserLanguage() {
   return js.context['navigator']['language'] ?? js.context['navigator']['userLanguage'];
 }
 
-void openUrl(String url) {}
+void openUrl(String url) {
+  js.context.callMethod('open', [url]);
+}
 
 /// Indicates wether this value is in between [min] (inclusive) and [max] (exclusive).
 bool isInBetween<T extends num>(T value, {T min, T max}) {
