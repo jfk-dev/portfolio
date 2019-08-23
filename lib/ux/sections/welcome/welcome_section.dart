@@ -41,7 +41,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
     );
     _highlightsAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.35, 0.7),
+      curve: Interval(0.42, 0.7),
     );
     _socialsAnimation = CurvedAnimation(
       parent: _baseAnimation,

@@ -1,4 +1,3 @@
-import 'dart:html' as html;
 import 'dart:js' as js;
 
 Map<String, String> getCurrentUrlParameters() {

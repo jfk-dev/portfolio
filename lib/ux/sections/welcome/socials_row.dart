@@ -3,6 +3,7 @@ import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/models/ux_data.dart';
 import 'package:jfkdev/ux/widgets/animatable.dart';
+import 'package:jfkdev/ux/widgets/jfk_icon_button.dart';
 
 class SocialsRow extends AnimatableStatefulWidget {
   const SocialsRow({
@@ -18,12 +19,12 @@ class SocialsRow extends AnimatableStatefulWidget {
 }
 
 class _SocialsRowState extends AnimatableState<SocialsRow> {
-  final _personSocialsAnimations = <Animation<double>>[];
+  final _personalSocialsAnimations = <Animation<double>>[];
 
   @override
   void initState() {
     super.initState();
-    _personSocialsAnimations.addAll(divideAnimationAlongItems(
+    _personalSocialsAnimations.addAll(divideAnimationAlongItems(
       personalSocialMediaData,
       parent: baseAnimation,
       overlapStart: 1.0,
@@ -34,9 +35,12 @@ class _SocialsRowState extends AnimatableState<SocialsRow> {
   @override
   Widget build(BuildContext context) {
     // TODO(jeroen-meijer): Add animatedbuilders.
-    return IconButton(
-      icon: Icon(personalSocialMediaData.first.icon),
-      onPressed: () => openUrl(personalSocialMediaData.first.url),
-    ); //FIXME: Implement properly.
+    return Row(
+      children: <Widget>[
+        JfkIconButton(
+          model: personalSocialMediaData.first,
+        ),
+      ],
+    );
   }
 }

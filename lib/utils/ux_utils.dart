@@ -1,12 +1,21 @@
+import 'dart:html' as html;
+import 'dart:js' as js;
+
 import 'package:flutter_web/animation.dart';
 import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
+import 'package:jfkdev/ux/models/ux_models.dart';
 import 'package:meta/meta.dart';
 
-// Typedefs
 
 // Functions
+void setCursor(CursorType type) {
+  (js.context['document'] as html.HtmlDocument).body.style.cursor = type.toString();
+}
+
+void resetCursor() => setCursor(CursorType.initial);
+
 String getGreetingForCurrentTime() {
   final hour = DateTime.now().hour;
   if (isInBetween(hour, min: 6, max: 12)) {
@@ -38,8 +47,6 @@ List<Animation<double>> divideAnimationAlongItems<T>(
 
     final start = valueBetween(relativeStart - overlapStart, min: 0.0);
     final end = valueBetween(relativeStart + unit + overlapEnd, max: 1.0);
-
-    print('E: $i, start: $start, end: $end');
 
     result.add(CurvedAnimation(
       parent: parent,
