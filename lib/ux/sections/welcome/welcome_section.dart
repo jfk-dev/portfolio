@@ -24,6 +24,7 @@ class WelcomeSection extends StatefulWidget {
 class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProviderStateMixin {
   AnimationController _baseAnimation;
   Animation<double> _headerAnimation;
+  Animation<double> _wavesAnimation;
   Animation<double> _highlightsAnimation;
   Animation<double> _socialsAnimation;
   Animation<double> _downArrowAnimation;
@@ -35,21 +36,25 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
       vsync: this,
       duration: const Duration(milliseconds: 3000),
     )..forward();
+    _wavesAnimation = CurvedAnimation(
+      parent: _baseAnimation,
+      curve: const Interval(0.3, 1.0),
+    );
     _headerAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.0, 0.7),
+      curve: const Interval(0.0, 0.7),
     );
     _highlightsAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.42, 0.7),
+      curve: const Interval(0.42, 0.9),
     );
     _socialsAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.45, 1.0),
+      curve: const Interval(0.50, 1.0),
     );
     _downArrowAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: Interval(0.65, 1.0),
+      curve: const Interval(0.75, 1.0),
     );
   }
 
@@ -67,7 +72,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
             children: <Widget>[
               verticalMargin32,
               Expanded(
-                flex: 2,
+                flex: 3,
                 child: FittedBox(
                   fit: BoxFit.contain,
                   child: Padding(
@@ -77,7 +82,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: 6,
                 child: Center(
                   child: HighlightsList(animation: _highlightsAnimation),
                 ),
@@ -89,28 +94,37 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
               Spacer(),
               Flexible(
                 flex: 2,
-                child: WaveWidget(
-                  config: WaveConfigCustom(
-                    gradients: [
-                      [AppTheme.colorBackgroundLight, Colors.blue],
-                      [Colors.blue[800], Colors.blue[300]],
-                      [Colors.blue[900], AppTheme.colorBackgroundLight],
-                      [AppTheme.colorDefaultGradientOne, AppTheme.colorDefaultGradientTwo],
-                    ],
-                    durations: [
-                      35000,
-                      19440,
-                      10800,
-                      6000,
-                    ],
-                    heightPercentages: [
-                      0.20,
-                      0.23,
-                      0.25,
-                      0.30,
-                    ],
-                    gradientBegin: Alignment.bottomLeft,
-                    gradientEnd: Alignment.topRight,
+                child: AnimatedBuilder(
+                  animation: _wavesAnimation,
+                  builder: (context, child) {
+                    return Transform.translate(
+                      offset: Offset(0.0, 250 - (Curves.fastLinearToSlowEaseIn.transform(_wavesAnimation.value) * 250)),
+                      child: child,
+                    );
+                  },
+                  child: WaveWidget(
+                    config: WaveConfigCustom(
+                      gradients: [
+                        [AppTheme.colorBackgroundLight, Colors.blue],
+                        [Colors.blue[800], Colors.blue[300]],
+                        [Colors.blue[900], AppTheme.colorBackgroundLight],
+                        [AppTheme.colorDefaultGradientOne, AppTheme.colorDefaultGradientTwo],
+                      ],
+                      durations: [
+                        35000,
+                        19440,
+                        10800,
+                        6000,
+                      ],
+                      heightPercentages: [
+                        0.20,
+                        0.23,
+                        0.25,
+                        0.30,
+                      ],
+                      gradientBegin: Alignment.bottomLeft,
+                      gradientEnd: Alignment.topRight,
+                    ),
                   ),
                 ),
               ),
