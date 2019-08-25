@@ -25,6 +25,9 @@ abstract class Localization {
   const Localization();
 
   String get id;
+  String get name;
+  String get fallbackName;
+  String get icon;
   String get title => 'JFK.DEV';
   String get about => 'About';
   String get firstName => 'Jeroen';
@@ -45,6 +48,12 @@ abstract class Localization {
 
   String get highlightSpeakerTitle => 'Speaker';
   String get highlightSpeakerDescription => 'Available for talks.';
+
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  bool operator ==(dynamic other) => identical(this, other) || other is Localization && id == other.id;
 }
 
 class LocalizationEn extends Localization {
@@ -52,6 +61,12 @@ class LocalizationEn extends Localization {
 
   @override
   String get id => 'en';
+  @override
+  String get name => 'English (US)';
+  @override
+  String get fallbackName => name;
+  @override
+  String get icon => '🇺🇸';
 }
 
 class LocalizationNl extends Localization {
@@ -59,6 +74,12 @@ class LocalizationNl extends Localization {
 
   @override
   String get id => 'nl';
+  @override
+  String get name => 'Nederlands';
+  @override
+  String get fallbackName => 'Dutch';
+  @override
+  String get icon => '🇳🇱';
   @override
   String get about => 'Over Mij';
   @override
@@ -73,7 +94,7 @@ class LocalizationNl extends Localization {
   String get iAm => 'Ik ben';
 
   @override
-    String get highlightSoftwareDeveloperTitle => 'Software Ontwikkelaar';
+  String get highlightSoftwareDeveloperTitle => 'Software Ontwikkelaar';
   @override
   String get highlightSoftwareDeveloperDescription => 'Flutter, TypeScript en meer.';
 

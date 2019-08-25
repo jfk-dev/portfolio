@@ -19,27 +19,28 @@ class _MainContainerState extends State<MainContainer> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.position.addListener(_onScrollPositionChanged);
+      // _scrollController.position.addListener(_onScrollPositionChanged);
     });
   }
 
-  void _onScrollPositionChanged() {
-    if (_amountOfPagesScrolled == 0 && _isScrolledToTop == false) {
-      setState(() {
-        _isScrolledToTop = true;
-      });
-    } else if (_amountOfPagesScrolled != 0 && _isScrolledToTop == true) {
-      setState(() {
-        _isScrolledToTop = false;
-      });
-    }
-  }
+  // void _onScrollPositionChanged() {
+  //   if (_amountOfPagesScrolled == 0 && _isScrolledToTop == false) {
+  //     setState(() {
+  //       _isScrolledToTop = true;
+  //     });
+  //   } else if (_amountOfPagesScrolled != 0 && _isScrolledToTop == true) {
+  //     setState(() {
+  //       _isScrolledToTop = false;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       controller: _scrollController,
-      physics: const BouncingScrollPhysics(),
+      // physics: const BouncingScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       children: <Widget>[
         WelcomeSection(showDownArrow: false),
         // AboutSection(),

@@ -54,30 +54,33 @@ class _HighlightsListState extends AnimatableState<HighlightsList> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        runSpacing: 16,
-        spacing: 16,
-        children: <Widget>[
-          for (int i = 0; i < welcomeScreenHighlights.length; i++)
-            AnimatedBuilder(
-              animation: _highlightAnimations.elementAt(i),
-              builder: (context, child) {
-                final animation = _highlightAnimations.elementAt(i);
-                return Transform.translate(
-                  offset: Offset((animation.value * 100) - 100, 0.0),
-                  child: Opacity(
-                    opacity: animation.value,
-                    child: child,
-                  ),
-                );
-              },
-              child: HighlightCard(model: welcomeScreenHighlights.elementAt(i)),
-            )
-        ],
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          runSpacing: 16,
+          spacing: 16,
+          children: <Widget>[
+            for (int i = 0; i < welcomeScreenHighlights.length; i++)
+              AnimatedBuilder(
+                animation: _highlightAnimations.elementAt(i),
+                builder: (context, child) {
+                  final animation = _highlightAnimations.elementAt(i);
+                  return Transform.translate(
+                    offset: Offset((animation.value * 100) - 100, 0.0),
+                    child: Opacity(
+                      opacity: animation.value,
+                      child: child,
+                    ),
+                  );
+                },
+                child: HighlightCard(model: welcomeScreenHighlights.elementAt(i)),
+              )
+          ],
+        ),
       ),
     );
   }
