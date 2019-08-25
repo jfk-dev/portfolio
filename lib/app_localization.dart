@@ -5,12 +5,14 @@ class AppLocalizations {
 
   static const en = LocalizationEn();
   static const nl = LocalizationNl();
+  static const ja = LocalizationJa();
 
   static const fallback = en;
 
   static const values = <Localization>[
     en,
     nl,
+    ja,
   ];
 
   static Localization get instance => GetIt.instance<Localization>();
@@ -34,11 +36,11 @@ abstract class Localization {
   String get lastName => 'Meijer';
   String get nickName => 'Jay';
   String get commonName => nickName;
-  String get greetingMorning => 'Good morning';
-  String get greetingAfternoon => 'Good afternoon';
-  String get greetingEvening => 'Good evening';
-  String get iAm => "I'm";
-  String get introduction => '$iAm $commonName';
+  String get greetingMorning => 'Good morning.';
+  String get greetingAfternoon => 'Good afternoon.';
+  String get greetingEvening => 'Good evening.';
+  String get introductionPrefix => "I'm ";
+  String get introductionSuffix => '.';
 
   String get highlightSoftwareDeveloperTitle => 'Software Developer';
   String get highlightSoftwareDeveloperDescription => 'Flutter, TypeScript and more.';
@@ -85,13 +87,13 @@ class LocalizationNl extends Localization {
   @override
   String get commonName => firstName;
   @override
-  String get greetingMorning => 'Goedemorgen';
+  String get greetingMorning => 'Goedemorgen.';
   @override
-  String get greetingAfternoon => 'Goedemiddag';
+  String get greetingAfternoon => 'Goedemiddag.';
   @override
-  String get greetingEvening => 'Goedenavond';
+  String get greetingEvening => 'Goedenavond.';
   @override
-  String get iAm => 'Ik ben';
+  String get introductionPrefix => 'Ik ben ';
 
   @override
   String get highlightSoftwareDeveloperTitle => 'Software Ontwikkelaar';
@@ -107,4 +109,50 @@ class LocalizationNl extends Localization {
   String get highlightSpeakerTitle => 'Spreker';
   @override
   String get highlightSpeakerDescription => 'Beschikbaar voor lectures.';
+}
+
+class LocalizationJa extends Localization {
+  const LocalizationJa();
+
+  @override
+  String get id => 'ja';
+  @override
+  String get name => '日本語';
+  @override
+  String get fallbackName => 'Japanese';
+  @override
+  String get icon => '🇯🇵';
+  @override
+  String get about => '僕について';
+  @override
+  String get firstName => 'イェルン';
+  @override
+  String get lastName => 'マヤー';
+  @override
+  String get commonName => firstName;
+  @override
+  String get greetingMorning => 'おはよう。';
+  @override
+  String get greetingAfternoon => 'こんにちは。';
+  @override
+  String get greetingEvening => 'こんばんは。';
+  @override
+  String get introductionPrefix => '';
+  @override
+  String get introductionSuffix => 'です。';
+
+  @override
+  String get highlightSoftwareDeveloperTitle => 'ソフトウェア開発';
+  @override
+  String get highlightSoftwareDeveloperDescription => 'Flutter、TypeScriptなど。';
+
+  @override
+  String get highlightOpenSourceContributorTitle => 'コミュニティの貢献者';
+  @override
+  String get highlightOpenSourceContributorDescription => 'Flutter Communityを管理しています。';
+
+  // @override
+  // String get highlightSpeakerTitle => 'TODO';
+  // @override
+  // String get highlightSpeakerDescription => 'TODO.';
 }
