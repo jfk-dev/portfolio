@@ -10,7 +10,7 @@ import 'package:jfkdev/ux/widgets/wave/wave.dart';
 import 'package:jfkdev/ux/widgets/widget_utils.dart';
 
 class WelcomeSection extends StatefulWidget {
-  const WelcomeSection({
+  WelcomeSection({
     Key key,
     this.showDownArrow = true,
   }) : super(key: key);

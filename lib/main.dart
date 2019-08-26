@@ -9,7 +9,7 @@ void main() => runApp(JfkDevApp());
 
 class JfkDevApp extends StatelessWidget {
   JfkDevApp() {
-    final urlParameters = getCurrentUrlParameters();
+    final urlParameters = getCurrentUrl().queryParameters;
     final localeId = urlParameters['lang'] ?? getBrowserLanguage().split('-').first;
     GetIt.instance.registerSingleton<AppLocalization>(AppLocalization.fromLocaleId(localeId));
   }

@@ -1,6 +1,7 @@
 import 'package:flutter_web/material.dart';
 import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
+import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/models/ux_models.dart';
 
@@ -10,6 +11,8 @@ class LanguageSwitcher extends StatefulWidget {
 }
 
 class _LanguageSwitcherState extends State<LanguageSwitcher> {
+  static const _cardPadding = EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0);
+
   bool _isCollapsed = true;
 
   Localization get currentLocalization => AppLocalization.current;
@@ -53,11 +56,13 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
         child: _isCollapsed
             ? _CollapsedView(
                 localization: currentLocalization,
+                padding: _cardPadding,
                 onTap: _switch,
               )
             : _ExpandedView(
                 selectedLocalization: currentLocalization,
                 localizations: selectableLanguages,
+                padding: _cardPadding,
                 onTap: _switch,
               ),
       ),
@@ -69,22 +74,27 @@ class _CollapsedView extends StatelessWidget {
   const _CollapsedView({
     Key key,
     @required this.localization,
+    this.padding = EdgeInsets.zero,
     @required this.onTap,
   }) : super(key: key);
 
   final Localization localization;
+  final EdgeInsets padding;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: _LocalizationTile(
-            localization: localization,
-            showTitle: false,
+      child: Opacity(
+        opacity: 0.6,
+        child: Card(
+          child: Padding(
+            padding: padding,
+            child: _LocalizationTile(
+              localization: localization,
+              showTitle: false,
+            ),
           ),
         ),
       ),
@@ -97,23 +107,30 @@ class _ExpandedView extends StatelessWidget {
     Key key,
     @required this.selectedLocalization,
     @required this.localizations,
+    this.padding = EdgeInsets.zero,
     @required this.onTap,
   }) : super(key: key);
 
   final Localization selectedLocalization;
   final List<Localization> localizations;
+  final EdgeInsets padding;
   final VoidCallback onTap;
 
   void _onSelectLocalization(Localization localization) {
-    onTap();
-    AppLocalization.instance.localization = localization;
+    openUrl(
+      getCurrentUrl().origin,
+      queryParameters: {
+        'lang': localization.id,
+      },
+      openInNewTab: false,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: padding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

@@ -87,8 +87,8 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
               ),
             );
           },
-          child: Text.rich(
-            TextSpan(
+          child: RichText(
+            text: TextSpan(
               style: TextStyle(
                 fontFamily: AppTheme.fontFamilyDefault,
                 color: AppTheme.colorTextSecondary,
