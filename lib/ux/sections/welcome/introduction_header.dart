@@ -96,14 +96,14 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
               ),
               children: [
                 TextSpan(text: '${getGreetingForCurrentTime()}\n'),
-                TextSpan(text: AppLocalizations.instance.introductionPrefix),
+                TextSpan(text: AppLocalization.current.introductionPrefix),
                 TextSpan(
-                  text: AppLocalizations.instance.commonName,
+                  text: AppLocalization.current.commonName,
                   style: TextStyle(
                     color: AppTheme.colorTextPrimary,
                   ),
                 ),
-                TextSpan(text: AppLocalizations.instance.introductionSuffix),
+                TextSpan(text: AppLocalization.current.introductionSuffix),
               ],
             ),
           ),

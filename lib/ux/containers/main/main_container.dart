@@ -1,6 +1,7 @@
 import 'package:flutter_web/material.dart';
 import 'package:jfkdev/ux/sections/about/about_section.dart';
 import 'package:jfkdev/ux/sections/welcome/welcome_section.dart';
+import 'package:jfkdev/ux/widgets/language_switcher.dart';
 
 class MainContainer extends StatefulWidget {
   @override
@@ -37,13 +38,22 @@ class _MainContainerState extends State<MainContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      controller: _scrollController,
-      // physics: const BouncingScrollPhysics(),
-      physics: const NeverScrollableScrollPhysics(),
+    return Stack(
       children: <Widget>[
-        WelcomeSection(showDownArrow: false),
-        // AboutSection(),
+        ListView(
+          controller: _scrollController,
+          // physics: const BouncingScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            WelcomeSection(showDownArrow: false),
+            // AboutSection(),
+          ],
+        ),
+        Positioned(
+          top: 16.0,
+          left: 16.0,
+          child: LanguageSwitcher(),
+        ),
       ],
     );
   }

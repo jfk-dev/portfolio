@@ -11,17 +11,22 @@ class JfkDevApp extends StatelessWidget {
   JfkDevApp() {
     final urlParameters = getCurrentUrlParameters();
     final localeId = urlParameters['lang'] ?? getBrowserLanguage().split('-').first;
-    GetIt.instance.registerSingleton<Localization>(AppLocalizations.fromLocaleId(localeId));
+    GetIt.instance.registerSingleton<AppLocalization>(AppLocalization.fromLocaleId(localeId));
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppLocalizations.instance.title,
+      title: AppLocalization.current.title,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme(),
       home: Scaffold(
-        body: MainContainer(),
+        body: ValueListenableBuilder(
+          valueListenable: AppLocalization.instance.onChangeLocalization,
+          builder: (context, _, __) {
+            return MainContainer();
+          },
+        ),
       ),
     );
   }

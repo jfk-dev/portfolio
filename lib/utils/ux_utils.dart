@@ -11,7 +11,7 @@ import 'package:meta/meta.dart';
 
 // Functions
 void setCursor(CursorType type) {
-  (js.context['document'] as html.HtmlDocument).body.style.cursor = type.toString();
+  html.document.body.style.cursor = type.toString();
 }
 
 void resetCursor() => setCursor(CursorType.initial);
@@ -19,11 +19,11 @@ void resetCursor() => setCursor(CursorType.initial);
 String getGreetingForCurrentTime() {
   final hour = DateTime.now().hour;
   if (isInBetween(hour, min: 6, max: 12)) {
-    return AppLocalizations.instance.greetingMorning;
+    return AppLocalization.current.greetingMorning;
   } else if (isInBetween(hour, min: 12, max: 18)) {
-    return AppLocalizations.instance.greetingAfternoon;
+    return AppLocalization.current.greetingAfternoon;
   } else {
-    return AppLocalizations.instance.greetingEvening;
+    return AppLocalization.current.greetingEvening;
   }
 }
 

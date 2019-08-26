@@ -43,6 +43,7 @@ class AppTheme {
       accentColor: colorGreen,
       toggleableActiveColor: colorGreen,
       canvasColor: colorBackgroundLight,
+      cardColor: colorBackgroundDark,
       fontFamily: fontFamilyDefault,
       buttonTheme: ButtonThemeData(
         buttonColor: Colors.black,

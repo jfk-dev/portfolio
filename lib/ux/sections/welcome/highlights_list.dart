@@ -22,25 +22,25 @@ class HighlightsList extends AnimatableStatefulWidget {
 }
 
 class _HighlightsListState extends AnimatableState<HighlightsList> {
-  final welcomeScreenHighlights = <ContentViewModel>[
-    ContentViewModel(
-      icon: AppIcons.code,
-      title: AppLocalizations.instance.highlightSoftwareDeveloperTitle,
-      description: AppLocalizations.instance.highlightSoftwareDeveloperDescription,
-    ),
-    ContentViewModel(
-      icon: AppIcons.heart,
-      title: AppLocalizations.instance.highlightOpenSourceContributorTitle,
-      description: AppLocalizations.instance.highlightOpenSourceContributorDescription,
-    ),
-    ContentViewModel(
-      icon: AppIcons.chat,
-      title: AppLocalizations.instance.highlightSpeakerTitle,
-      description: AppLocalizations.instance.highlightSpeakerDescription,
-    ),
-  ];
-
   final _highlightAnimations = <Animation<double>>[];
+
+  List<ContentViewModel> get welcomeScreenHighlights => [
+        ContentViewModel(
+          icon: AppIcons.code,
+          title: AppLocalization.current.highlightSoftwareDeveloperTitle,
+          description: AppLocalization.current.highlightSoftwareDeveloperDescription,
+        ),
+        ContentViewModel(
+          icon: AppIcons.heart,
+          title: AppLocalization.current.highlightOpenSourceContributorTitle,
+          description: AppLocalization.current.highlightOpenSourceContributorDescription,
+        ),
+        ContentViewModel(
+          icon: AppIcons.chat,
+          title: AppLocalization.current.highlightSpeakerTitle,
+          description: AppLocalization.current.highlightSpeakerDescription,
+        ),
+      ];
 
   @override
   void initState() {

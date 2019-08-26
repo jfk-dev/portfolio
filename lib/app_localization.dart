@@ -1,11 +1,23 @@
+import 'package:flutter_web/foundation.dart';
 import 'package:get_it/get_it.dart';
 
-class AppLocalizations {
-  const AppLocalizations._();
+class AppLocalization {
+  AppLocalization._(this._currentLocalization);
 
-  static const en = LocalizationEn();
-  static const nl = LocalizationNl();
-  static const ja = LocalizationJa();
+  factory AppLocalization.fromLocaleId(String id) {
+    return AppLocalization._(
+      ValueNotifier(
+        values.firstWhere(
+          (locale) => locale.id == id,
+          orElse: () => fallback,
+        ),
+      ),
+    );
+  }
+
+  static const en = _LocalizationEn();
+  static const nl = _LocalizationNl();
+  static const ja = _LocalizationJa();
 
   static const fallback = en;
 
@@ -15,12 +27,17 @@ class AppLocalizations {
     ja,
   ];
 
-  static Localization get instance => GetIt.instance<Localization>();
+  static AppLocalization get instance => GetIt.instance<AppLocalization>();
+  static Localization get current => instance._currentLocalization.value;
 
-  static Localization fromLocaleId(String id) => values.firstWhere(
-        (locale) => locale.id == id,
-        orElse: () => fallback,
-      );
+  final ValueNotifier<Localization> _currentLocalization;
+
+  Localization get localization => _currentLocalization.value;
+  set localization(Localization localization) {
+    _currentLocalization.value = localization;
+  }
+
+  ValueNotifier<Localization> get onChangeLocalization => _currentLocalization;
 }
 
 abstract class Localization {
@@ -58,8 +75,8 @@ abstract class Localization {
   bool operator ==(dynamic other) => identical(this, other) || other is Localization && id == other.id;
 }
 
-class LocalizationEn extends Localization {
-  const LocalizationEn();
+class _LocalizationEn extends Localization {
+  const _LocalizationEn();
 
   @override
   String get id => 'en';
@@ -71,8 +88,8 @@ class LocalizationEn extends Localization {
   String get icon => '🇺🇸';
 }
 
-class LocalizationNl extends Localization {
-  const LocalizationNl();
+class _LocalizationNl extends Localization {
+  const _LocalizationNl();
 
   @override
   String get id => 'nl';
@@ -111,8 +128,8 @@ class LocalizationNl extends Localization {
   String get highlightSpeakerDescription => 'Beschikbaar voor lectures.';
 }
 
-class LocalizationJa extends Localization {
-  const LocalizationJa();
+class _LocalizationJa extends Localization {
+  const _LocalizationJa();
 
   @override
   String get id => 'ja';
