@@ -142,17 +142,17 @@ class LocalizationJa extends Localization {
   String get introductionSuffix => 'です。';
 
   @override
-  String get highlightSoftwareDeveloperTitle => 'ソフトウェア開発';
+  String get highlightSoftwareDeveloperTitle => 'ソフトウェア開発者';
   @override
   String get highlightSoftwareDeveloperDescription => 'Flutter、TypeScriptなど。';
 
   @override
   String get highlightOpenSourceContributorTitle => 'コミュニティの貢献者';
   @override
-  String get highlightOpenSourceContributorDescription => 'Flutter Communityを管理しています。';
+  String get highlightOpenSourceContributorDescription => 'Flutter Communityの代表です。';
 
-  // @override
-  // String get highlightSpeakerTitle => 'TODO';
-  // @override
-  // String get highlightSpeakerDescription => 'TODO.';
+  @override
+  String get highlightSpeakerTitle => 'スピーカー';
+  @override
+  String get highlightSpeakerDescription => 'プログラミングについて説明します。';
 }
