@@ -2,7 +2,9 @@ import 'dart:html' as html;
 import 'dart:js' as js;
 
 import 'package:flutter_web/animation.dart';
+import 'package:flutter_web/widgets.dart';
 import 'package:jfkdev/app_localization.dart';
+import 'package:jfkdev/models/config.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/ux/models/ux_models.dart';
@@ -19,11 +21,11 @@ void resetCursor() => setCursor(CursorType.initial);
 String getGreetingForCurrentTime() {
   final hour = DateTime.now().hour;
   if (isInBetween(hour, min: 6, max: 12)) {
-    return AppLocalization.current.greetingMorning;
+    return AppLocalization.instance.greetingMorning;
   } else if (isInBetween(hour, min: 12, max: 18)) {
-    return AppLocalization.current.greetingAfternoon;
+    return AppLocalization.instance.greetingAfternoon;
   } else {
-    return AppLocalization.current.greetingEvening;
+    return AppLocalization.instance.greetingEvening;
   }
 }
 
@@ -55,4 +57,22 @@ List<Animation<double>> divideAnimationAlongItems<T>(
   }
 
   return result;
+}
+
+Map<String, WidgetBuilder> buildRedirectRoutes(List<Redirect> redirects) {
+  final result = <String, WidgetBuilder>{};
+
+  for (final redirect in redirects) {
+    result.addAll({redirect.keyword: redirectWidget(redirect.url)});
+  }
+
+  return result;
+}
+
+WidgetBuilder redirectWidget(String url) {
+  return (context) {
+    log('Redirecting to $url');
+    openUrl(url, openInNewTab: false);
+    return null;
+  };
 }

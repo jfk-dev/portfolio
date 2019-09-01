@@ -1,17 +1,14 @@
 import 'package:flutter_web/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:jfkdev/models/config.dart';
 
 class AppLocalization {
-  AppLocalization._(this._currentLocalization);
+  AppLocalization._();
 
-  factory AppLocalization.fromLocaleId(String id) {
-    return AppLocalization._(
-      ValueNotifier(
-        values.firstWhere(
-          (locale) => locale.id == id,
-          orElse: () => fallback,
-        ),
-      ),
+  static Localization fromLocaleId(String id) {
+    return values.firstWhere(
+      (locale) => locale.id == id,
+      orElse: () => fallback,
     );
   }
 
@@ -27,17 +24,7 @@ class AppLocalization {
     ja,
   ];
 
-  static AppLocalization get instance => GetIt.instance<AppLocalization>();
-  static Localization get current => instance._currentLocalization.value;
-
-  final ValueNotifier<Localization> _currentLocalization;
-
-  Localization get localization => _currentLocalization.value;
-  set localization(Localization localization) {
-    _currentLocalization.value = localization;
-  }
-
-  ValueNotifier<Localization> get onChangeLocalization => _currentLocalization;
+  static Localization get instance => GetIt.instance<Config>().localization;
 }
 
 abstract class Localization {

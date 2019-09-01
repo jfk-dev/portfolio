@@ -27,18 +27,18 @@ class _HighlightsListState extends AnimatableState<HighlightsList> {
   List<ContentViewModel> get welcomeScreenHighlights => [
         ContentViewModel(
           icon: AppIcons.code,
-          title: AppLocalization.current.highlightSoftwareDeveloperTitle,
-          description: AppLocalization.current.highlightSoftwareDeveloperDescription,
+          title: AppLocalization.instance.highlightSoftwareDeveloperTitle,
+          description: AppLocalization.instance.highlightSoftwareDeveloperDescription,
         ),
         ContentViewModel(
           icon: AppIcons.heart,
-          title: AppLocalization.current.highlightOpenSourceContributorTitle,
-          description: AppLocalization.current.highlightOpenSourceContributorDescription,
+          title: AppLocalization.instance.highlightOpenSourceContributorTitle,
+          description: AppLocalization.instance.highlightOpenSourceContributorDescription,
         ),
         ContentViewModel(
           icon: AppIcons.chat,
-          title: AppLocalization.current.highlightSpeakerTitle,
-          description: AppLocalization.current.highlightSpeakerDescription,
+          title: AppLocalization.instance.highlightSpeakerTitle,
+          description: AppLocalization.instance.highlightSpeakerDescription,
         ),
       ];
 

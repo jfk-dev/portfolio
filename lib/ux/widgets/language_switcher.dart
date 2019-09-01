@@ -15,7 +15,7 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
 
   bool _isCollapsed = true;
 
-  Localization get currentLocalization => AppLocalization.current;
+  Localization get currentLocalization => AppLocalization.instance;
   List<Localization> get selectableLanguages =>
       AppLocalization.values.where((localization) => localization != currentLocalization).toList();
 

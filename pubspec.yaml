@@ -9,6 +9,7 @@ dependencies:
   flutter_web: any
   flutter_web_ui: any
   get_it: ^2.0.1
+  yaml: ^2.1.16
 
 dev_dependencies:
   build_runner: ^1.5.0
@@ -16,6 +17,8 @@ dev_dependencies:
   pedantic: ^1.7.0
 
 flutter:
+  assets:
+    - web/assets/config.yaml
   fonts:
     - family: Fira Code
       fonts:
@@ -39,10 +42,10 @@ flutter:
         - asset: assets/fonts/Product Sans/Product Sans Bold Italic.ttf
           weight: 700
           style: italic
-    - family:  AppIcons
+    - family: AppIcons
       fonts:
         - asset: assets/fontsAppIcons/AppIcons.ttf
-        
+
 dependency_overrides:
   flutter_web:
     git:
