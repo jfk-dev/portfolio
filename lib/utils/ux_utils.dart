@@ -58,21 +58,3 @@ List<Animation<double>> divideAnimationAlongItems<T>(
 
   return result;
 }
-
-Map<String, WidgetBuilder> buildRedirectRoutes(List<Redirect> redirects) {
-  final result = <String, WidgetBuilder>{};
-
-  for (final redirect in redirects) {
-    result.addAll({redirect.keyword: redirectWidget(redirect.url)});
-  }
-
-  return result;
-}
-
-WidgetBuilder redirectWidget(String url) {
-  return (context) {
-    log('Redirecting to $url');
-    openUrl(url, openInNewTab: false);
-    return null;
-  };
-}
