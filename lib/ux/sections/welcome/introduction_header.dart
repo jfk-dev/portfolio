@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
@@ -49,12 +49,9 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
             return Transform.scale(
               scale: 1.4 - (_titleAnimation.value * 0.4),
               alignment: Alignment.topCenter,
-              child: FractionalTranslation(
-                translation: Offset(0, 0.5 - (_iconTranslationAnimation.value * 0.5)),
-                child: Opacity(
-                  opacity: valueBetween(_iconTranslationAnimation.value, max: 1),
-                  child: child,
-                ),
+              child: Opacity(
+                opacity: 0.99,
+                child: child,
               ),
             );
           },
@@ -99,7 +96,7 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
                 TextSpan(text: AppLocalization.instance.introductionPrefix),
                 TextSpan(
                   text: AppLocalization.instance.commonName,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppTheme.colorTextPrimary,
                   ),
                 ),

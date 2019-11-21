@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:jfkdev/ux/widgets/widget_utils.dart';
 
 abstract class AnimatableWidget extends StatelessWidget {

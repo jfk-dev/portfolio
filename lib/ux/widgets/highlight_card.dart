@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/ux/models/ux_models.dart';
 import 'package:jfkdev/ux/widgets/jfk_card.dart';

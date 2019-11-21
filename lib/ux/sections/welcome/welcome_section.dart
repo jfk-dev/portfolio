@@ -1,6 +1,8 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/ux/app_icons.dart';
+import 'package:jfkdev/ux/sections/welcome/business_info.dart';
 import 'package:jfkdev/ux/sections/welcome/introduction_header.dart';
 import 'package:jfkdev/ux/sections/welcome/highlights_list.dart';
 import 'package:jfkdev/ux/sections/welcome/socials_row.dart';
@@ -10,7 +12,7 @@ import 'package:jfkdev/ux/widgets/wave/wave.dart';
 import 'package:jfkdev/ux/widgets/widget_utils.dart';
 
 class WelcomeSection extends StatefulWidget {
-  WelcomeSection({
+  const WelcomeSection({
     Key key,
     this.showDownArrow = true,
   }) : super(key: key);
@@ -19,6 +21,11 @@ class WelcomeSection extends StatefulWidget {
 
   @override
   _WelcomeSectionState createState() => _WelcomeSectionState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<bool>('showDownArrow', showDownArrow));
+  }
 }
 
 class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProviderStateMixin {
@@ -27,6 +34,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
   Animation<double> _wavesAnimation;
   Animation<double> _highlightsAnimation;
   Animation<double> _socialsAnimation;
+  Animation<double> _businessInfoAnimation;
   Animation<double> _downArrowAnimation;
 
   @override
@@ -52,6 +60,10 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
       parent: _baseAnimation,
       curve: const Interval(0.50, 1.0),
     );
+    _businessInfoAnimation = CurvedAnimation(
+      parent: _baseAnimation,
+      curve: const Interval(0.70, 1.0),
+    );
     _downArrowAnimation = CurvedAnimation(
       parent: _baseAnimation,
       curve: const Interval(0.75, 1.0),
@@ -64,10 +76,10 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
       child: Stack(
         children: <Widget>[
           // FIXME: Temporary fix for bug with text rendering in `HighlightsList`.
-          Offstage(
-            offstage: true,
-            child: HighlightsList(animation: _highlightsAnimation),
-          ),
+          // Offstage(
+          //   offstage: true,
+          //   child: HighlightsList(animation: _highlightsAnimation),
+          // ),
           Column(
             children: <Widget>[
               verticalMargin32,
@@ -88,10 +100,12 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
                 ),
               ),
               Expanded(
-                flex: 1,
                 child: SocialsRow(animation: _socialsAnimation),
               ),
-              Spacer(),
+              Expanded(
+                child: BusinessInfo(animation: _businessInfoAnimation),
+              ),
+              const Spacer(),
               Flexible(
                 flex: 2,
                 child: AnimatedBuilder(
@@ -105,9 +119,9 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
                   child: WaveWidget(
                     config: WaveConfigCustom(
                       gradients: [
-                        [AppTheme.colorBackgroundLight, Colors.blue],
+                        [AppTheme.colorBackgroundPrimary, Colors.blue],
                         [Colors.blue[800], Colors.blue[300]],
-                        [Colors.blue[900], AppTheme.colorBackgroundLight],
+                        [Colors.blue[900], AppTheme.colorBackgroundPrimary],
                         [AppTheme.colorDefaultGradientOne, AppTheme.colorDefaultGradientTwo],
                       ],
                       durations: [

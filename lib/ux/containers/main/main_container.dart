@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/ux/sections/welcome/welcome_section.dart';
 import 'package:jfkdev/ux/widgets/language_switcher.dart';

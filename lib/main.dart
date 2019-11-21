@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/models/config.dart';

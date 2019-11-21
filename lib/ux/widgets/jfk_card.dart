@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:jfkdev/theme.dart';
 
 class JfkCard extends StatelessWidget {
@@ -25,7 +25,7 @@ class JfkCard extends StatelessWidget {
       onHover: (isHovering) => isHovering ? onPointerEnter?.call() : onPointerExit?.call(),
       onTap: onTap,
       child: Container(
-        color: AppTheme.colorBackgroundDark,
+        color: AppTheme.colorBackgroundSecondary,
         width: width,
         height: height,
         child: child,

@@ -25,7 +25,7 @@
 ///         License:   SIL ()
 ///         Homepage:  http://fortawesome.github.com/Font-Awesome/
 ///
-import 'package:flutter_web/widgets.dart';
+import 'package:flutter/widgets.dart';
 
 class AppIcons {
   AppIcons._();

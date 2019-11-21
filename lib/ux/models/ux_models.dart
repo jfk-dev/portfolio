@@ -1,4 +1,4 @@
-import 'package:flutter_web/widgets.dart';
+import 'package:flutter/widgets.dart';
 
 class ContentViewModel {
   const ContentViewModel({

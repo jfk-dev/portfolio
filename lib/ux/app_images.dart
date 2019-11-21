@@ -1,4 +1,4 @@
-import 'package:flutter_web/widgets.dart';
+import 'package:flutter/widgets.dart';
 
 class AppImages {
   static AssetImage _asset(String path) => AssetImage('images/$path');

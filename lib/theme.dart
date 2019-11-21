@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 
 class AppTheme {
   const AppTheme._();
@@ -18,8 +18,8 @@ class AppTheme {
   static const colorTextSecondary = Color(0xFFB7B9C0);
   static const colorTextTernary = Color(0xFF6E7380);
 
-  static const colorBackgroundLight = Color(0xFF23222D);
-  static const colorBackgroundDark = Color(0xFF15161E);
+  static const colorBackgroundPrimary = Color(0xFF181A1F);
+  static const colorBackgroundSecondary = Color(0xFF292D36);
 
   static const colorRed = Color(0xFFF22D55);
   static const colorGreen = Color(0xFF29FFCA);
@@ -37,13 +37,13 @@ class AppTheme {
   static ThemeData theme() {
     return ThemeData(
       brightness: Brightness.dark,
-      backgroundColor: colorBackgroundDark,
-      scaffoldBackgroundColor: colorBackgroundLight,
-      primaryColor: colorBackgroundDark,
+      backgroundColor: colorBackgroundSecondary,
+      scaffoldBackgroundColor: colorBackgroundPrimary,
+      primaryColor: colorBackgroundSecondary,
       accentColor: colorGreen,
       toggleableActiveColor: colorGreen,
-      canvasColor: colorBackgroundLight,
-      cardColor: colorBackgroundDark,
+      canvasColor: colorBackgroundPrimary,
+      cardColor: colorBackgroundSecondary,
       fontFamily: fontFamilyDefault,
       buttonTheme: ButtonThemeData(
         buttonColor: Colors.black,

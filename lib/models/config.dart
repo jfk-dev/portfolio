@@ -9,7 +9,7 @@ class Config {
     @required this.localization,
   });
 
-  static const _default = Config._(
+  static const fallback = Config._(
     localization: AppLocalization.fallback,
   );
 
@@ -19,8 +19,8 @@ class Config {
 
   static Future<Config> parseYaml(String path) async {
     try {
-      final yamlFile = await readAsset(path);
-      final YamlMap yaml = loadYaml(yamlFile);
+      // final yamlFile = await readAsset(path);
+      // final YamlMap yaml = loadYaml(yamlFile);
 
       // Use yaml for config.
 
@@ -32,7 +32,7 @@ class Config {
       );
     } on Exception catch (e) {
       log('YAML asset file "$path" not found or invalid. Using default config.\nException: $e');
-      return _default;
+      return fallback;
     }
   }
 }

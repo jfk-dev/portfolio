@@ -1,7 +1,7 @@
 import 'dart:html' as html;
 import 'dart:js' as js;
 
-import 'package:flutter_web/services.dart' show rootBundle;
+import 'package:flutter/services.dart' show rootBundle;
 
 void log(dynamic message) {
   html.window.console.log(message);
