@@ -22,19 +22,19 @@ class IntroductionHeader extends AnimatableStatefulWidget {
 }
 
 class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
-  Animation<double> _iconTranslationAnimation;
+  Animation<double> _iconAnimation;
   Animation<double> _titleAnimation;
 
   @override
   void initState() {
     super.initState();
-    _iconTranslationAnimation = CurvedAnimation(
+    _iconAnimation = CurvedAnimation(
       parent: baseAnimation,
-      curve: Interval(0.0, 0.6, curve: AppTheme.animationCurveDefault),
+      curve: Interval(0.0, 0.4, curve: Curves.easeIn),
     );
     _titleAnimation = CurvedAnimation(
       parent: baseAnimation,
-      curve: Interval(0.4, 1.0, curve: AppTheme.animationCurveDefault),
+      curve: Interval(0.15, 1.0, curve: AppTheme.animationCurveDefault),
     );
   }
 
@@ -44,15 +44,12 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         AnimatedBuilder(
-          animation: _iconTranslationAnimation,
+          animation: _iconAnimation,
           builder: (context, child) {
-            return Transform.scale(
-              scale: 1.4 - (_titleAnimation.value * 0.4),
-              alignment: Alignment.topCenter,
-              child: Opacity(
-                opacity: 0.99,
-                child: child,
-              ),
+            return Opacity(
+              // FIXME: Workaround for bug where image would clip and stutter.
+              opacity: valueBetween(_iconAnimation.value - 0.1, min: 0),
+              child: child,
             );
           },
           child: Padding(

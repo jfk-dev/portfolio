@@ -50,7 +50,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
     );
     _headerAnimation = CurvedAnimation(
       parent: _baseAnimation,
-      curve: const Interval(0.0, 0.7),
+      curve: const Interval(0.0, 0.45),
     );
     _highlightsAnimation = CurvedAnimation(
       parent: _baseAnimation,
