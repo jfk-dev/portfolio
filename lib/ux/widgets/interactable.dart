@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/models/ux_models.dart';
@@ -46,9 +45,9 @@ class Interactable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Listener(
-      onPointerEnter: (_) => _onInteractStart(),
-      onPointerExit: (_) => _onInteractEnd(),
+    return MouseRegion(
+      onEnter: (_) => _onInteractStart(),
+      onExit: (_) => _onInteractEnd(),
       child: child,
     );
   }

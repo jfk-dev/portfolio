@@ -5,10 +5,10 @@ import 'package:jfkdev/ux/widgets/fill_screen.dart';
 class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FillScreen(
+    return const FillScreen(
       gradient: AppTheme.gradientDefault,
       child: Center(
-        child: const Text('About'),
+        child: Text('About'),
       ),
     );
   }

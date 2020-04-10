@@ -55,7 +55,7 @@ class _MainContainerState extends State<MainContainer> with SingleTickerProvider
           controller: _scrollController,
           // physics: const BouncingScrollPhysics(),
           physics: const NeverScrollableScrollPhysics(),
-          children: <Widget>[
+          children: const <Widget>[
             WelcomeSection(showDownArrow: false),
             // AboutSection(),
           ],

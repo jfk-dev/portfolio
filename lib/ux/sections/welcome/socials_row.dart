@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/models/ux_data.dart';
 import 'package:jfkdev/ux/widgets/animatable.dart';

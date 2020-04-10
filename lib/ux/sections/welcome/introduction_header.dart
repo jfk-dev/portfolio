@@ -34,7 +34,7 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
     );
     _titleAnimation = CurvedAnimation(
       parent: baseAnimation,
-      curve: Interval(0.15, 1.0, curve: AppTheme.animationCurveDefault),
+      curve: const Interval(0.15, 1.0, curve: AppTheme.animationCurveDefault),
     );
   }
 
@@ -83,7 +83,7 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
           },
           child: RichText(
             text: TextSpan(
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: AppTheme.fontFamilyDefault,
                 color: AppTheme.colorTextSecondary,
                 fontSize: 100,

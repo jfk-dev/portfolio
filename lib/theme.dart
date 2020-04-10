@@ -26,7 +26,7 @@ class AppTheme {
 
   static const colorDefaultGradientOne = Colors.cyan;
   static const colorDefaultGradientTwo = colorGreen;
-  static final gradientDefault = LinearGradient(
+  static const gradientDefault = LinearGradient(
     colors: [colorDefaultGradientOne, colorDefaultGradientTwo],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,

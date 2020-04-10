@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:jfkdev/models/config.dart';
 
@@ -55,7 +54,7 @@ abstract class Localization {
   String get highlightSpeakerTitle => 'Speaker';
   String get highlightSpeakerDescription => 'Available for talks.';
 
-  String get businessInfo => 'JFK.DEV ・ Pleinweg 142C, 3083EP, Rotterdam\nKVK: 74990241 ・ VAT/BTW: NL230812910B01';
+  String get businessInfo => 'JFK.DEV ・ Pleinweg 142C, 3083EP, Rotterdam\nKVK: 74990241';
 
   @override
   int get hashCode => id.hashCode;

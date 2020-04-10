@@ -1,10 +1,8 @@
 import 'dart:html' as html;
-import 'dart:js' as js;
 
 import 'package:flutter/animation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jfkdev/app_localization.dart';
-import 'package:jfkdev/models/config.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/ux/models/ux_models.dart';

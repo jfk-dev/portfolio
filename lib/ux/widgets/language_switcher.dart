@@ -27,9 +27,9 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
 
   @override
   Widget build(BuildContext context) {
-    return Listener(
-      onPointerEnter: (_) => setCursor(CursorType.pointer),
-      onPointerExit: (_) => resetCursor(),
+    return MouseRegion(
+      onEnter: (_) => setCursor(CursorType.pointer),
+      onExit: (_) => resetCursor(),
       child: AnimatedSwitcher(
         switchInCurve: AppTheme.animationCurveDefault,
         switchOutCurve: AppTheme.animationCurveDefault.flipped,

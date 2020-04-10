@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jfkdev/app_localization.dart';
@@ -32,6 +30,8 @@ class _BusinessInfoState extends AnimatableState<BusinessInfo> {
       },
       child: SelectableText(
         AppLocalization.instance.businessInfo,
+        maxLines: 2,
+        textAlign: TextAlign.center,
         style: const TextStyle(
           color: AppTheme.colorTextSecondary,
         ),

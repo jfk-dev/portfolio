@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jfkdev/app_localization.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/app_icons.dart';
 import 'package:jfkdev/ux/models/ux_models.dart';

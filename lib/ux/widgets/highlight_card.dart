@@ -31,14 +31,14 @@ class HighlightCard extends StatelessWidget {
                 if (model.title != null)
                   Text(
                     model.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24.0,
                     ),
                   ),
                 if (model.description != null)
                   Text(
                     model.description,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppTheme.colorTextSecondary,
                       fontSize: 16.0,
                     ),
