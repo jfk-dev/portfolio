@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+// ignore: avoid_classes_with_only_static_members
 class AppImages {
   static AssetImage _asset(String path) => AssetImage('assets/images/$path');
   // ignore: unused_element

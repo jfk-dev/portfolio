@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/theme.dart';
+import 'package:portfolio/theme.dart';
 
 class JfkCard extends StatelessWidget {
   const JfkCard({
@@ -22,7 +22,8 @@ class JfkCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onHover: (isHovering) => isHovering ? onPointerEnter?.call() : onPointerExit?.call(),
+      onHover: (isHovering) =>
+          isHovering ? onPointerEnter?.call() : onPointerExit?.call(),
       onTap: onTap,
       child: Container(
         color: AppTheme.colorBackgroundSecondary,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/ux/models/ux_models.dart';
-import 'package:jfkdev/ux/widgets/jfk_card.dart';
+import 'package:portfolio/theme.dart';
+import 'package:portfolio/ux/models/ux_models.dart';
+import 'package:portfolio/ux/widgets/jfk_card.dart';
 
 class HighlightCard extends StatelessWidget {
   const HighlightCard({

@@ -24,5 +24,5 @@ const horizontalMargin24 = SizedBox(width: 24);
 const horizontalMargin32 = SizedBox(width: 32);
 const horizontalMargin36 = SizedBox(width: 36);
 
-const stoppedAnimationStart = AlwaysStoppedAnimation(0.0); 
-const stoppedAnimationEnd = AlwaysStoppedAnimation(1.0); 
+const stoppedAnimationStart = AlwaysStoppedAnimation(0.0);
+const stoppedAnimationEnd = AlwaysStoppedAnimation(1.0);

@@ -13,14 +13,28 @@ class WaveConfigCustom extends WaveConfig {
     @required this.durations,
     @required this.heightPercentages,
     this.blur,
-  })  : assert(colors != null || gradients != null, '`color or `gradients` must be provided.'),
-        assert(colors == null || gradients == null, 'Cannot provide both colors and gradients.'),
-        assert(durations != null, '`durations` must be provided.'),
-        assert(heightPercentages != null, '`heightPercentages` must be provided.'),
+  })  : assert(
+          colors != null || gradients != null,
+          '`color or `gradients` must be provided.',
+        ),
+        assert(
+          colors == null || gradients == null,
+          'Cannot provide both colors and gradients.',
+        ),
+        assert(
+          durations != null,
+          '`durations` must be provided.',
+        ),
+        assert(
+          heightPercentages != null,
+          '`heightPercentages` must be provided.',
+        ),
         assert(
           colors == null ||
-              colors != null && colors.length == durations.length && colors.length == heightPercentages.length,
-          'Length of `colors`, `durations` and `heightPercentages` must be equal.',
+              colors.length == durations.length &&
+                  colors.length == heightPercentages.length,
+          'Length of `colors`, `durations` and `heightPercentages` '
+          'must be equal.',
         );
 
   final List<Color> colors;
@@ -30,14 +44,4 @@ class WaveConfigCustom extends WaveConfig {
   final List<int> durations;
   final List<double> heightPercentages;
   final MaskFilter blur;
-}
-
-// TODO: Implement.
-class RandomConfig extends WaveConfig {
-  RandomConfig();
-}
-
-// TODO: Implement.
-class SingleConfig extends WaveConfig {
-  SingleConfig();
 }
