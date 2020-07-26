@@ -24,18 +24,19 @@ void openUrl(
   Map<String, dynamic> queryParameters,
   bool openInNewTab = true,
 }) {
-  final parameters = queryParameters.entries.fold<String>(
-    '',
-    (query, entry) {
-      return '$query'
-          '&${entry.key}='
-          '${Uri.encodeComponent(entry.value.toString())}';
-    },
-  ).substring(1);
+  var serializedQuery = '';
+  if (queryParameters?.isNotEmpty ?? false) {
+    final parameters = queryParameters.entries.fold<String>(
+      '',
+      (query, entry) {
+        return '$query'
+            '&${entry.key}='
+            '${Uri.encodeComponent(entry.value.toString())}';
+      },
+    ).substring(1);
 
-  final serializedQuery = (queryParameters == null || queryParameters.isEmpty)
-      ? ''
-      : '?$parameters';
+    serializedQuery = '?$parameters';
+  }
 
   final fullUrl = '$url$serializedQuery';
 

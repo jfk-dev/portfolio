@@ -21,11 +21,16 @@ class IntroductionHeader extends AnimatableStatefulWidget {
 }
 
 class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
+  Animation<double> _iconAnimation;
   Animation<double> _titleAnimation;
 
   @override
   void initState() {
     super.initState();
+    _iconAnimation = CurvedAnimation(
+      parent: baseAnimation,
+      curve: const Interval(0.0, 0.4, curve: Curves.easeIn),
+    );
     _titleAnimation = CurvedAnimation(
       parent: baseAnimation,
       curve: const Interval(0.15, 1.0, curve: AppTheme.animationCurveDefault),
@@ -37,12 +42,22 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 32),
-          child: CircleAvatar(
-            radius: 164,
-            backgroundColor: Colors.transparent,
-            backgroundImage: AppImages.profilePicture,
+        AnimatedBuilder(
+          animation: _iconAnimation,
+          builder: (context, child) {
+            return Opacity(
+              // FIXME: Workaround for bug where image would clip and stutter.
+              opacity: (_iconAnimation.value - 0.1).clamp(0.0, 1.0).toDouble(),
+              child: child,
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 32),
+            child: CircleAvatar(
+              radius: 164,
+              backgroundColor: Colors.transparent,
+              backgroundImage: AppImages.profilePicture,
+            ),
           ),
         ),
         AnimatedBuilder(
@@ -57,7 +72,8 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, 0.001)
                     ..rotateY(
-                        (math.pi / 2) - (_titleAnimation.value * math.pi) / 2),
+                      (math.pi / 2) - (_titleAnimation.value * math.pi) / 2,
+                    ),
                   child: Opacity(
                     opacity:
                         1, // valueBetween(_titleAnimation.value, max: 1.0),
