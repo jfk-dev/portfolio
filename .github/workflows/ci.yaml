@@ -8,8 +8,6 @@ on:
 jobs:
   app:
     runs-on: ubuntu-latest
-    env:
-      WORKING_DIRECTORY: ./app/
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -22,12 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Format
         run: flutter format --dry-run --set-exit-if-changed .
-        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Analyze
         run: flutter analyze
-        working-directory: ${{ env.WORKING_DIRECTORY }}

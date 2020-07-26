@@ -1,0 +1,45 @@
+pull_request_rules:
+- name: "Assign author"
+  conditions: []
+  actions:
+    assign:
+      users:
+        - "{{author}}"
+
+# Merge flow for contributors
+- name: "Request review"
+  conditions:
+    - "author!=jeroen-meijer"
+  actions:
+    request_reviews:
+      users:
+        - "jeroen-meijer"
+- name: "Merge when CI passes & has one approval"
+  conditions:
+    - "author!=jeroen-meijer"
+    - "label!=wip"
+    - "status-success~=app"
+    - "#approved-reviews-by>=1"
+  actions: 
+    merge:
+      method: squash
+      strict: smart
+      commit_message: default
+
+# Merge flow for non-contributors
+- name: "Merge when CI passes"
+  conditions:
+    - "author=jeroen-meijer"
+    - "label!=wip"
+    - "status-success~=app"
+  actions: 
+    merge:
+      method: squash
+      strict: smart
+      commit_message: default
+
+- name: Delete branch post merge
+  conditions:
+    - merged
+  actions:
+    delete_head_branch: {}
