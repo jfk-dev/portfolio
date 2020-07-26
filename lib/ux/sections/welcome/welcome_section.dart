@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/ux/app_icons.dart';
-import 'package:jfkdev/ux/sections/welcome/business_info.dart';
-import 'package:jfkdev/ux/sections/welcome/introduction_header.dart';
-import 'package:jfkdev/ux/sections/welcome/highlights_list.dart';
-import 'package:jfkdev/ux/sections/welcome/socials_row.dart';
-import 'package:jfkdev/ux/widgets/fill_screen.dart';
-import 'package:jfkdev/ux/widgets/wave/config.dart';
-import 'package:jfkdev/ux/widgets/wave/wave.dart';
-import 'package:jfkdev/ux/widgets/widget_utils.dart';
+import 'package:portfolio/theme.dart';
+import 'package:portfolio/ux/app_icons.dart';
+import 'package:portfolio/ux/sections/welcome/business_info.dart';
+import 'package:portfolio/ux/sections/welcome/introduction_header.dart';
+import 'package:portfolio/ux/sections/welcome/highlights_list.dart';
+import 'package:portfolio/ux/sections/welcome/socials_row.dart';
+import 'package:portfolio/ux/widgets/fill_screen.dart';
+import 'package:portfolio/ux/widgets/wave/config.dart';
+import 'package:portfolio/ux/widgets/wave/wave.dart';
+import 'package:portfolio/ux/widgets/widget_utils.dart';
 
 class WelcomeSection extends StatefulWidget {
   const WelcomeSection({

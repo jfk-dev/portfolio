@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/ux/widgets/widget_utils.dart';
+import 'package:portfolio/ux/widgets/widget_utils.dart';
 
 abstract class AnimatableWidget extends StatelessWidget {
   const AnimatableWidget({

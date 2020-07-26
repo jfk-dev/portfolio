@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/app_localization.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/utils/utils.dart';
+import 'package:portfolio/app_localization.dart';
+import 'package:portfolio/theme.dart';
+import 'package:portfolio/utils/utils.dart';
 
 class LanguageSwitcher extends StatefulWidget {
   @override

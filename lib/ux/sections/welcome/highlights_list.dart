@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/app_localization.dart';
-import 'package:jfkdev/utils/ux_utils.dart';
-import 'package:jfkdev/ux/app_icons.dart';
-import 'package:jfkdev/ux/models/ux_models.dart';
-import 'package:jfkdev/ux/widgets/animatable.dart';
-import 'package:jfkdev/ux/widgets/highlight_card.dart';
+import 'package:portfolio/app_localization.dart';
+import 'package:portfolio/utils/ux_utils.dart';
+import 'package:portfolio/ux/app_icons.dart';
+import 'package:portfolio/ux/models/ux_models.dart';
+import 'package:portfolio/ux/widgets/animatable.dart';
+import 'package:portfolio/ux/widgets/highlight_card.dart';
 
 class HighlightsList extends AnimatableStatefulWidget {
   const HighlightsList({

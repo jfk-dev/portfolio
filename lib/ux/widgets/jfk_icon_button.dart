@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:jfkdev/utils/utils.dart';
-import 'package:jfkdev/ux/models/ux_models.dart';
+import 'package:portfolio/utils/utils.dart';
+import 'package:portfolio/ux/models/ux_models.dart';
 
 class JfkIconButton extends StatefulWidget {
   const JfkIconButton({

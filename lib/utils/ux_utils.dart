@@ -1,7 +1,7 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:jfkdev/app_localization.dart';
-import 'package:jfkdev/theme.dart';
+import 'package:portfolio/app_localization.dart';
+import 'package:portfolio/theme.dart';
 import 'package:meta/meta.dart';
 
 // Functions

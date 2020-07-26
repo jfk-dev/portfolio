@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/theme.dart';
+import 'package:portfolio/theme.dart';
 
 class JfkCard extends StatelessWidget {
   const JfkCard({

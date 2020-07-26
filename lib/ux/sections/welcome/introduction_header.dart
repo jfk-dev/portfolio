@@ -1,11 +1,11 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:jfkdev/app_localization.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/utils/ux_utils.dart';
-import 'package:jfkdev/ux/app_images.dart';
-import 'package:jfkdev/ux/widgets/animatable.dart';
+import 'package:portfolio/app_localization.dart';
+import 'package:portfolio/theme.dart';
+import 'package:portfolio/utils/ux_utils.dart';
+import 'package:portfolio/ux/app_images.dart';
+import 'package:portfolio/ux/widgets/animatable.dart';
 
 class IntroductionHeader extends AnimatableStatefulWidget {
   const IntroductionHeader({

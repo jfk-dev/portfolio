@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:jfkdev/models/config.dart';
+import 'package:portfolio/models/config.dart';
 
 class AppLocalization {
   AppLocalization._();

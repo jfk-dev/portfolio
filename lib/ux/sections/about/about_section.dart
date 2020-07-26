@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/ux/widgets/fill_screen.dart';
+import 'package:portfolio/theme.dart';
+import 'package:portfolio/ux/widgets/fill_screen.dart';
 
 class AboutSection extends StatelessWidget {
   @override

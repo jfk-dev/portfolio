@@ -1,5 +1,5 @@
-import 'package:jfkdev/ux/app_icons.dart';
-import 'package:jfkdev/ux/models/ux_models.dart';
+import 'package:portfolio/ux/app_icons.dart';
+import 'package:portfolio/ux/models/ux_models.dart';
 
 const personalSocialMediaData = <ContentViewModel>[
   ContentViewModel(
