@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/ux/sections/welcome/welcome_section.dart';
-import 'package:jfkdev/ux/widgets/language_switcher.dart';
+import 'package:portfolio/theme.dart';
+import 'package:portfolio/ux/sections/welcome/welcome_section.dart';
+import 'package:portfolio/ux/widgets/language_switcher.dart';
 
 class MainContainer extends StatefulWidget {
   @override
   _MainContainerState createState() => _MainContainerState();
 }
 
-class _MainContainerState extends State<MainContainer> with SingleTickerProviderStateMixin {
+class _MainContainerState extends State<MainContainer>
+    with SingleTickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
 
   AnimationController _overlayAnimation;

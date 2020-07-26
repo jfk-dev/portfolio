@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/ux/app_icons.dart';
-import 'package:jfkdev/ux/sections/welcome/business_info.dart';
-import 'package:jfkdev/ux/sections/welcome/introduction_header.dart';
-import 'package:jfkdev/ux/sections/welcome/highlights_list.dart';
-import 'package:jfkdev/ux/sections/welcome/socials_row.dart';
-import 'package:jfkdev/ux/widgets/fill_screen.dart';
-import 'package:jfkdev/ux/widgets/wave/config.dart';
-import 'package:jfkdev/ux/widgets/wave/wave.dart';
-import 'package:jfkdev/ux/widgets/widget_utils.dart';
+import 'package:portfolio/theme.dart';
+import 'package:portfolio/ux/app_icons.dart';
+import 'package:portfolio/ux/sections/welcome/business_info.dart';
+import 'package:portfolio/ux/sections/welcome/introduction_header.dart';
+import 'package:portfolio/ux/sections/welcome/highlights_list.dart';
+import 'package:portfolio/ux/sections/welcome/socials_row.dart';
+import 'package:portfolio/ux/widgets/fill_screen.dart';
+import 'package:portfolio/ux/widgets/wave/config.dart';
+import 'package:portfolio/ux/widgets/wave/wave.dart';
+import 'package:portfolio/ux/widgets/widget_utils.dart';
 
 class WelcomeSection extends StatefulWidget {
   const WelcomeSection({
@@ -28,7 +28,8 @@ class WelcomeSection extends StatefulWidget {
   }
 }
 
-class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProviderStateMixin {
+class _WelcomeSectionState extends State<WelcomeSection>
+    with SingleTickerProviderStateMixin {
   AnimationController _baseAnimation;
   Animation<double> _headerAnimation;
   Animation<double> _wavesAnimation;
@@ -75,11 +76,6 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
     return FillScreen(
       child: Stack(
         children: <Widget>[
-          // FIXME: Temporary fix for bug with text rendering in `HighlightsList`.
-          // Offstage(
-          //   offstage: true,
-          //   child: HighlightsList(animation: _highlightsAnimation),
-          // ),
           Column(
             children: <Widget>[
               verticalMargin32,
@@ -112,7 +108,12 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
                   animation: _wavesAnimation,
                   builder: (context, child) {
                     return Transform.translate(
-                      offset: Offset(0.0, 250 - (Curves.fastLinearToSlowEaseIn.transform(_wavesAnimation.value) * 250)),
+                      offset: Offset(
+                          0.0,
+                          250 -
+                              (Curves.fastLinearToSlowEaseIn
+                                      .transform(_wavesAnimation.value) *
+                                  250)),
                       child: child,
                     );
                   },
@@ -122,7 +123,10 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
                         [AppTheme.colorBackgroundPrimary, Colors.blue],
                         [Colors.blue[800], Colors.blue[300]],
                         [Colors.blue[900], AppTheme.colorBackgroundPrimary],
-                        [AppTheme.colorDefaultGradientOne, AppTheme.colorDefaultGradientTwo],
+                        [
+                          AppTheme.colorDefaultGradientOne,
+                          AppTheme.colorDefaultGradientTwo
+                        ],
                       ],
                       durations: [
                         35000,
@@ -150,9 +154,15 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
               animation: _downArrowAnimation,
               builder: (context, child) {
                 return Transform.translate(
-                  offset: Offset(0.0, -32 + (AppTheme.animationCurveDefault.transform(_downArrowAnimation.value) * 32)),
+                  offset: Offset(
+                      0.0,
+                      -32 +
+                          (AppTheme.animationCurveDefault
+                                  .transform(_downArrowAnimation.value) *
+                              32)),
                   child: Opacity(
-                    opacity: AppTheme.animationCurveDefault.transform(_downArrowAnimation.value),
+                    opacity: AppTheme.animationCurveDefault
+                        .transform(_downArrowAnimation.value),
                     child: child,
                   ),
                 );
@@ -162,7 +172,7 @@ class _WelcomeSectionState extends State<WelcomeSection> with SingleTickerProvid
                 child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 350),
                   opacity: widget.showDownArrow ? 1.0 : 0.0,
-                  child: Icon(AppIcons.downOpen),
+                  child: const Icon(AppIcons.downOpen),
                 ),
               ),
             ),

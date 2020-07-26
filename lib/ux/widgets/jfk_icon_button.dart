@@ -1,8 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:jfkdev/utils/utils.dart';
-import 'package:jfkdev/utils/ux_utils.dart';
-import 'package:jfkdev/ux/models/ux_models.dart';
+import 'package:portfolio/utils/utils.dart';
+import 'package:portfolio/ux/models/ux_models.dart';
 
 class JfkIconButton extends StatefulWidget {
   const JfkIconButton({
@@ -42,20 +41,18 @@ class _JfkIconButtonState extends State<JfkIconButton> {
     setState(() {
       _isHovering = true;
     });
-
-    setCursor(CursorType.pointer);
   }
 
   void _onPointerExit(PointerExitEvent event) {
     setState(() {
       _isHovering = false;
     });
-    resetCursor();
   }
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: MaterialStateMouseCursor.clickable,
       onEnter: _onPointerEnter,
       onExit: _onPointerExit,
       child: GestureDetector(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jfkdev/ux/widgets/widget_utils.dart';
+import 'package:portfolio/ux/widgets/widget_utils.dart';
 
 abstract class AnimatableWidget extends StatelessWidget {
   const AnimatableWidget({
@@ -24,7 +24,8 @@ abstract class AnimatableStatefulWidget extends StatefulWidget {
   AnimatableState<AnimatableStatefulWidget> createState();
 }
 
-abstract class AnimatableState<T extends AnimatableStatefulWidget> extends State<T>
-    with SingleTickerProviderStateMixin {
-  Animation<double> get baseAnimation => widget.animation ?? stoppedAnimationEnd;
+abstract class AnimatableState<T extends AnimatableStatefulWidget>
+    extends State<T> with SingleTickerProviderStateMixin {
+  Animation<double> get baseAnimation =>
+      widget.animation ?? stoppedAnimationEnd;
 }

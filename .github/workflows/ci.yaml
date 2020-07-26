@@ -1,0 +1,28 @@
+name: CI
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1.3.0
+        with:
+          channel: beta
+          flutter-version: 1.20.0-7.2.pre
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Format
+        run: flutter format --dry-run --set-exit-if-changed .
+
+      - name: Analyze
+        run: flutter analyze
