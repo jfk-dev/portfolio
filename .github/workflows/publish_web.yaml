@@ -8,8 +8,7 @@ jobs:
   publish_web:
     runs-on: ubuntu-latest
     env:
-      APP_WORKING_DIRECTORY: ./app/
-      BUILD_DIR: ./app/build/web/
+      BUILD_DIR: ./build/web/
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -22,15 +21,12 @@ jobs:
 
       - name: Install app dependencies
         run: flutter pub get
-        working-directory: ${{ env.APP_WORKING_DIRECTORY }}
 
       - name: Enable web support
         run: flutter config --enable-web
-        working-directory: ${{ env.APP_WORKING_DIRECTORY }}
 
       - name: Build
         run: flutter build web --release
-        working-directory: ${{ env.APP_WORKING_DIRECTORY }}
 
       - name: Publish
         uses: peaceiris/actions-gh-pages@v3
