@@ -6,7 +6,8 @@ class FillScreen extends StatelessWidget {
     this.color,
     this.gradient,
     @required this.child,
-  })  : assert(color == null || gradient == null, 'Either provide only a color or a gradient.'),
+  })  : assert(color == null || gradient == null,
+            'Either provide only a color or a gradient.'),
         super(key: key);
 
   final Color color;

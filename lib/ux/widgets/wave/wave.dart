@@ -218,7 +218,7 @@ class WaveWidget extends StatefulWidget {
     double height = double.infinity,
   }) : size = Size(width, height);
 
-  final WaveConfig config;
+  final WaveConfigCustom config;
   final Size size;
   final double waveAmplitude;
   final double wavePhase;
@@ -253,14 +253,16 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
 
   void _initAnimations() {
     if (widget.config is WaveConfigCustom) {
-      final WaveConfigCustom config = widget.config;
+      final config = widget.config;
       _waveControllers = config.durations.map((duration) {
         _waveAmplitudes.add(widget.waveAmplitude + 10);
-        return AnimationController(vsync: this, duration: Duration(milliseconds: duration));
+        return AnimationController(
+            vsync: this, duration: Duration(milliseconds: duration));
       }).toList();
 
       _wavePhaseValues = _waveControllers.map((controller) {
-        final curve = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+        final curve =
+            CurvedAnimation(parent: controller, curve: Curves.easeInOut);
         final value = Tween(
           begin: widget.wavePhase,
           end: 360 + widget.wavePhase,
@@ -285,34 +287,34 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
 
   List<Widget> _buildPaints() {
     final paints = <Widget>[];
-    if (widget.config is WaveConfigCustom) {
-      final WaveConfigCustom config = widget.config;
-      final colors = config.colors;
-      final gradients = config.gradients;
-      final begin = config.gradientBegin;
-      final end = config.gradientEnd;
-      for (int i = 0; i < _wavePhaseValues.length; i++) {
-        paints.add(
-          Container(
-            child: CustomPaint(
-              painter: _CustomWavePainter(
-                color: colors == null ? null : colors[i],
-                gradient: gradients == null ? null : gradients[i],
-                gradientBegin: begin,
-                gradientEnd: end,
-                heightPercentage: config.heightPercentages[i],
-                repaint: _waveControllers[i],
-                waveFrequency: widget.waveFrequency,
-                wavePhaseValue: _wavePhaseValues[i],
-                waveAmplitude: _waveAmplitudes[i],
-                blur: config.blur,
-              ),
-              size: widget.size,
+    final config = widget.config;
+    final colors = config.colors;
+    final gradients = config.gradients;
+    final begin = config.gradientBegin;
+    final end = config.gradientEnd;
+
+    for (var i = 0; i < _wavePhaseValues.length; i++) {
+      paints.add(
+        Container(
+          child: CustomPaint(
+            painter: _CustomWavePainter(
+              color: colors == null ? null : colors[i],
+              gradient: gradients == null ? null : gradients[i],
+              gradientBegin: begin,
+              gradientEnd: end,
+              heightPercentage: config.heightPercentages[i],
+              repaint: _waveControllers[i],
+              waveFrequency: widget.waveFrequency,
+              wavePhaseValue: _wavePhaseValues[i],
+              waveAmplitude: _waveAmplitudes[i],
+              blur: config.blur,
             ),
+            size: widget.size,
           ),
-        );
-      }
+        ),
+      );
     }
+
     return paints;
   }
 
@@ -393,9 +395,16 @@ class _CustomWavePainter extends CustomPainter {
     );
 
     _layer.path.reset();
-    _layer.path.moveTo(0.0, viewCenterY + _layer.amplitude * _getSinY(_layer.phase, waveFrequency, -1));
-    for (int i = 1; i < size.width + 1; i++) {
-      _layer.path.lineTo(i.toDouble(), viewCenterY + _layer.amplitude * _getSinY(_layer.phase, waveFrequency, i));
+    _layer.path.moveTo(
+      0.0,
+      viewCenterY +
+          _layer.amplitude * _getSinY(_layer.phase, waveFrequency, -1),
+    );
+    for (var i = 1; i < size.width + 1; i++) {
+      _layer.path.lineTo(
+          i.toDouble(),
+          viewCenterY +
+              _layer.amplitude * _getSinY(_layer.phase, waveFrequency, i));
     }
 
     _layer.path.lineTo(size.width, size.height);
@@ -405,7 +414,8 @@ class _CustomWavePainter extends CustomPainter {
       _paint.color = _layer.color;
     }
     if (_layer.gradient != null) {
-      final rect = Offset.zero & Size(size.width, size.height - viewCenterY * heightPercentage);
+      final rect = Offset.zero &
+          Size(size.width, size.height - viewCenterY * heightPercentage);
       _paint.shader = LinearGradient(
         begin: gradientBegin ?? Alignment.bottomCenter,
         end: gradientEnd ?? Alignment.topCenter,
@@ -432,7 +442,8 @@ class _CustomWavePainter extends CustomPainter {
     return false;
   }
 
-  double _getSinY(double startradius, double waveFrequency, int currentposition) {
+  double _getSinY(
+      double startradius, double waveFrequency, int currentposition) {
     if (_tempA == 0) {
       _tempA = pi / _viewWidth;
     }
@@ -440,6 +451,7 @@ class _CustomWavePainter extends CustomPainter {
       _tempB = 2 * pi / 360.0;
     }
 
-    return sin(_tempA * waveFrequency * (currentposition + 1) + startradius * _tempB);
+    return sin(
+        _tempA * waveFrequency * (currentposition + 1) + startradius * _tempB);
   }
 }

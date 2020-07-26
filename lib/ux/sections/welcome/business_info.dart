@@ -24,7 +24,8 @@ class _BusinessInfoState extends AnimatableState<BusinessInfo> {
       animation: baseAnimation,
       builder: (context, child) {
         return Opacity(
-          opacity: AppTheme.animationCurveDefault.transform(baseAnimation.value),
+          opacity:
+              AppTheme.animationCurveDefault.transform(baseAnimation.value),
           child: child,
         );
       },

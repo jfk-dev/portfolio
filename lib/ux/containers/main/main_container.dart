@@ -8,7 +8,8 @@ class MainContainer extends StatefulWidget {
   _MainContainerState createState() => _MainContainerState();
 }
 
-class _MainContainerState extends State<MainContainer> with SingleTickerProviderStateMixin {
+class _MainContainerState extends State<MainContainer>
+    with SingleTickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
 
   AnimationController _overlayAnimation;

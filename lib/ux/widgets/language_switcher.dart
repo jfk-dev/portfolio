@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
 import 'package:jfkdev/utils/utils.dart';
-import 'package:jfkdev/utils/ux_utils.dart';
-import 'package:jfkdev/ux/models/ux_models.dart';
 
 class LanguageSwitcher extends StatefulWidget {
   @override
@@ -11,13 +9,15 @@ class LanguageSwitcher extends StatefulWidget {
 }
 
 class _LanguageSwitcherState extends State<LanguageSwitcher> {
-  static const _cardPadding = EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0);
+  static const _cardPadding =
+      EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0);
 
   bool _isCollapsed = true;
 
   Localization get currentLocalization => AppLocalization.instance;
-  List<Localization> get selectableLanguages =>
-      AppLocalization.values.where((localization) => localization != currentLocalization).toList();
+  List<Localization> get selectableLanguages => AppLocalization.values
+      .where((localization) => localization != currentLocalization)
+      .toList();
 
   void _switch() {
     setState(() {
@@ -28,13 +28,12 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setCursor(CursorType.pointer),
-      onExit: (_) => resetCursor(),
+      cursor: MaterialStateMouseCursor.clickable,
       child: AnimatedSwitcher(
         switchInCurve: AppTheme.animationCurveDefault,
         switchOutCurve: AppTheme.animationCurveDefault.flipped,
         layoutBuilder: (currentChild, previousChildren) {
-          List<Widget> children = previousChildren;
+          var children = previousChildren;
           if (currentChild != null) {
             children = children.toList()..add(currentChild);
           }
@@ -160,7 +159,9 @@ class _LocalizationTile extends StatelessWidget {
   final Localization localization;
   final bool showTitle;
 
-  String get fallbackName => localization == AppLocalization.fallback ? '' : '(${localization.fallbackName})';
+  String get fallbackName => localization == AppLocalization.fallback
+      ? ''
+      : '(${localization.fallbackName})';
 
   @override
   Widget build(BuildContext context) {

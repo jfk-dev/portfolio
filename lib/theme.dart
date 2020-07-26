@@ -18,7 +18,7 @@ class AppTheme {
   static const colorTextSecondary = Color(0xFFB7B9C0);
   static const colorTextTernary = Color(0xFF6E7380);
 
-  static const colorBackgroundPrimary = Color(0xFF181A1F);
+  static const colorBackgroundPrimary = Color(0xFF0C0D0F);
   static const colorBackgroundSecondary = Color(0xFF292D36);
 
   static const colorRed = Color(0xFFF22D55);
@@ -45,11 +45,11 @@ class AppTheme {
       canvasColor: colorBackgroundPrimary,
       cardColor: colorBackgroundSecondary,
       fontFamily: fontFamilyDefault,
-      buttonTheme: ButtonThemeData(
+      buttonTheme: const ButtonThemeData(
         buttonColor: Colors.black,
         disabledColor: Colors.black,
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      inputDecorationTheme: const InputDecorationTheme(
         fillColor: Colors.white,
         filled: true,
         enabledBorder: OutlineInputBorder(

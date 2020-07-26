@@ -1,0 +1,46 @@
+name: Publish Web
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish_web:
+    runs-on: ubuntu-latest
+    env:
+      APP_WORKING_DIRECTORY: ./app/
+      BUILD_DIR: ./app/build/web/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1.3.0
+        with:
+          channel: beta
+          flutter-version: 1.20.0-7.2.pre
+
+      - name: Install app dependencies
+        run: flutter pub get
+        working-directory: ${{ env.APP_WORKING_DIRECTORY }}
+
+      - name: Enable web support
+        run: flutter config --enable-web
+        working-directory: ${{ env.APP_WORKING_DIRECTORY }}
+
+      - name: Build
+        run: flutter build web --release
+        working-directory: ${{ env.APP_WORKING_DIRECTORY }}
+
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.BUILD_DIR }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        continue-on-error: true
+        with:
+          name: web_build
+          path: ${{ env.BUILD_DIR }}

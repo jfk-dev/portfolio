@@ -22,7 +22,8 @@ class JfkCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onHover: (isHovering) => isHovering ? onPointerEnter?.call() : onPointerExit?.call(),
+      onHover: (isHovering) =>
+          isHovering ? onPointerEnter?.call() : onPointerExit?.call(),
       onTap: onTap,
       child: Container(
         color: AppTheme.colorBackgroundSecondary,

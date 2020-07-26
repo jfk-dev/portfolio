@@ -24,7 +24,8 @@ abstract class AnimatableStatefulWidget extends StatefulWidget {
   AnimatableState<AnimatableStatefulWidget> createState();
 }
 
-abstract class AnimatableState<T extends AnimatableStatefulWidget> extends State<T>
-    with SingleTickerProviderStateMixin {
-  Animation<double> get baseAnimation => widget.animation ?? stoppedAnimationEnd;
+abstract class AnimatableState<T extends AnimatableStatefulWidget>
+    extends State<T> with SingleTickerProviderStateMixin {
+  Animation<double> get baseAnimation =>
+      widget.animation ?? stoppedAnimationEnd;
 }

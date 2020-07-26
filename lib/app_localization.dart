@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:jfkdev/models/config.dart';
 
@@ -26,6 +27,7 @@ class AppLocalization {
   static Localization get instance => GetIt.instance<Config>().localization;
 }
 
+@immutable
 abstract class Localization {
   const Localization();
 
@@ -46,21 +48,25 @@ abstract class Localization {
   String get introductionSuffix => '.';
 
   String get highlightSoftwareDeveloperTitle => 'Software Developer';
-  String get highlightSoftwareDeveloperDescription => 'Flutter, TypeScript and more.';
+  String get highlightSoftwareDeveloperDescription =>
+      'Flutter, TypeScript and more.';
 
   String get highlightOpenSourceContributorTitle => 'Open Source Contributor';
-  String get highlightOpenSourceContributorDescription => 'and Flutter Community administrator.';
+  String get highlightOpenSourceContributorDescription =>
+      'and Flutter Community administrator.';
 
   String get highlightSpeakerTitle => 'Speaker';
   String get highlightSpeakerDescription => 'Available for talks.';
 
-  String get businessInfo => 'JFK.DEV ・ Pleinweg 142C, 3083EP, Rotterdam\nKVK: 74990241';
+  String get businessInfo =>
+      'JFK.DEV ・ Pleinweg 142C, 3083EP, Rotterdam\nKVK: 74990241';
 
   @override
   int get hashCode => id.hashCode;
 
   @override
-  bool operator ==(dynamic other) => identical(this, other) || other is Localization && id == other.id;
+  bool operator ==(dynamic other) =>
+      identical(this, other) || other is Localization && id == other.id;
 }
 
 class _LocalizationEn extends Localization {
@@ -103,12 +109,14 @@ class _LocalizationNl extends Localization {
   @override
   String get highlightSoftwareDeveloperTitle => 'Software Ontwikkelaar';
   @override
-  String get highlightSoftwareDeveloperDescription => 'Flutter, TypeScript en meer.';
+  String get highlightSoftwareDeveloperDescription =>
+      'Flutter, TypeScript en meer.';
 
   @override
   String get highlightOpenSourceContributorTitle => 'Werkt Open Source';
   @override
-  String get highlightOpenSourceContributorDescription => 'in de Flutter Community.';
+  String get highlightOpenSourceContributorDescription =>
+      'in de Flutter Community.';
 
   @override
   String get highlightSpeakerTitle => 'Spreker';
@@ -154,7 +162,8 @@ class _LocalizationJa extends Localization {
   @override
   String get highlightOpenSourceContributorTitle => 'コミュニティの貢献者';
   @override
-  String get highlightOpenSourceContributorDescription => 'Flutter Communityの代表です。';
+  String get highlightOpenSourceContributorDescription =>
+      'Flutter Communityの代表です。';
 
   @override
   String get highlightSpeakerTitle => 'スピーカー';

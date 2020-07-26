@@ -26,12 +26,14 @@ class _HighlightsListState extends AnimatableState<HighlightsList> {
         ContentViewModel(
           icon: AppIcons.code,
           title: AppLocalization.instance.highlightSoftwareDeveloperTitle,
-          description: AppLocalization.instance.highlightSoftwareDeveloperDescription,
+          description:
+              AppLocalization.instance.highlightSoftwareDeveloperDescription,
         ),
         ContentViewModel(
           icon: AppIcons.heart,
           title: AppLocalization.instance.highlightOpenSourceContributorTitle,
-          description: AppLocalization.instance.highlightOpenSourceContributorDescription,
+          description: AppLocalization
+              .instance.highlightOpenSourceContributorDescription,
         ),
         ContentViewModel(
           icon: AppIcons.chat,
@@ -75,7 +77,8 @@ class _HighlightsListState extends AnimatableState<HighlightsList> {
                     ),
                   );
                 },
-                child: HighlightCard(model: welcomeScreenHighlights.elementAt(i)),
+                child:
+                    HighlightCard(model: welcomeScreenHighlights.elementAt(i)),
               )
           ],
         ),

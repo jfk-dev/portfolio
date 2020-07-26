@@ -53,8 +53,8 @@ class _SocialsRowState extends AnimatableState<SocialsRow> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: JfkIconButton(
+                size: 32.0,
                 model: personalSocialMediaData.elementAt(i),
-                size: 32,
               ),
             ),
           )

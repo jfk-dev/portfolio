@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:jfkdev/app_localization.dart';
 import 'package:jfkdev/theme.dart';
-import 'package:jfkdev/utils/utils.dart';
 import 'package:jfkdev/utils/ux_utils.dart';
 import 'package:jfkdev/ux/app_images.dart';
 import 'package:jfkdev/ux/widgets/animatable.dart';
@@ -22,16 +21,11 @@ class IntroductionHeader extends AnimatableStatefulWidget {
 }
 
 class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
-  Animation<double> _iconAnimation;
   Animation<double> _titleAnimation;
 
   @override
   void initState() {
     super.initState();
-    _iconAnimation = CurvedAnimation(
-      parent: baseAnimation,
-      curve: Interval(0.0, 0.4, curve: Curves.easeIn),
-    );
     _titleAnimation = CurvedAnimation(
       parent: baseAnimation,
       curve: const Interval(0.15, 1.0, curve: AppTheme.animationCurveDefault),
@@ -43,22 +37,12 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        AnimatedBuilder(
-          animation: _iconAnimation,
-          builder: (context, child) {
-            return Opacity(
-              // FIXME: Workaround for bug where image would clip and stutter.
-              opacity: valueBetween(_iconAnimation.value - 0.1, min: 0),
-              child: child,
-            );
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(right: 32),
-            child: CircleAvatar(
-              radius: 164,
-              backgroundColor: Colors.transparent,
-              backgroundImage: AppImages.profilePicture,
-            ),
+        Padding(
+          padding: const EdgeInsets.only(right: 32),
+          child: CircleAvatar(
+            radius: 164,
+            backgroundColor: Colors.transparent,
+            backgroundImage: AppImages.profilePicture,
           ),
         ),
         AnimatedBuilder(
@@ -72,9 +56,11 @@ class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
                 child: Transform(
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, 0.001)
-                    ..rotateY((math.pi / 2) - (_titleAnimation.value * math.pi) / 2),
+                    ..rotateY(
+                        (math.pi / 2) - (_titleAnimation.value * math.pi) / 2),
                   child: Opacity(
-                    opacity: 1, // valueBetween(_titleAnimation.value, max: 1.0),
+                    opacity:
+                        1, // valueBetween(_titleAnimation.value, max: 1.0),
                     child: child,
                   ),
                 ),
