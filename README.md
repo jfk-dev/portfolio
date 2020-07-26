@@ -1,6 +1,6 @@
-# jfkdev
+# JFK.DEV Portfolio
 
-A new Flutter project.
+This is the Flutter website for JFK.DEV, written in Flutter.
 
 ## Getting Started
 
