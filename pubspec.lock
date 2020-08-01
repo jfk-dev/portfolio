@@ -179,4 +179,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.9.0-14.0.dev <3.0.0"
-  flutter: "1.20.0-7.2.pre"
+  flutter: "1.20.0-7.3.pre"

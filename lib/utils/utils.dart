@@ -1,10 +1,16 @@
+import 'dart:developer' as dev;
 import 'dart:html' as html;
 import 'dart:js' as js;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-void log(dynamic message) {
-  html.window.console.log(message);
+void log(Object message) {
+  if (kReleaseMode) {
+    html.window.console.log(message);
+  } else {
+    dev.log('$message');
+  }
 }
 
 Uri getCurrentUrl() {
