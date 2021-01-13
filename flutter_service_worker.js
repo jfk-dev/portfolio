@@ -3,31 +3,32 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "main.dart.js": "cc0dc0d72ef733acb531b419155e8d65",
-"favicon.png": "6d15f56b1da43113d3906761285d77dc",
-"index.html": "c8adca4fb83638229d49175e6eb89e1e",
-"/": "c8adca4fb83638229d49175e6eb89e1e",
+  "icons/Icon-512.png": "bf339d3fdfa9ef3886676526ce6be437",
+"icons/Icon-192.png": "83f05c02e74b8647be59aadc185f6dd5",
 "CNAME": "c7ef0f287cf047ae5fd02de3415fab05",
-"assets/fonts/MaterialIcons-Regular.ttf": "56d3ffdef7a25659eab6a68a3fbfaf16",
-"assets/FontManifest.json": "39be8e56b6650c39962e2196e1b3c5de",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "9a62a954b81a1ad45a58b9bcea89b50b",
-"assets/assets/fonts/Product-Sans/Product-Sans-Regular.ttf": "eae9c18cee82a8a1a52e654911f8fe83",
-"assets/assets/fonts/Product-Sans/Product-Sans-Italic.ttf": "e88ec18827526928e71407a24937825a",
-"assets/assets/fonts/Product-Sans/Product-Sans-Bold.ttf": "dba0c688b8d5ee09a1e214aebd5d25e4",
-"assets/assets/fonts/Product-Sans/Product-Sans-Bold-Italic.ttf": "79750b1d82b2558801373d62dd7e5280",
-"assets/assets/fonts/Fira-Code/FiraCode-Bold.ttf": "ea734aec73e961c5814b1b403c9b90c6",
-"assets/assets/fonts/Fira-Code/FiraCode-Light.ttf": "137778879005023b427be30df1f57d83",
-"assets/assets/fonts/Fira-Code/FiraCode-Medium.ttf": "e613bf534959b8c52533e77ea0cee44e",
-"assets/assets/fonts/Fira-Code/FiraCode-Regular.ttf": "1a77fe6d9f399212fcfcfde790ce66b2",
-"assets/assets/fonts/AppIcons/AppIcons.ttf": "336760a14cea820ab7e830b606516390",
-"assets/assets/images/profile_picture.png": "30c2eee3275881c6e9518e2c8e8ec286",
-"assets/assets/images/logo.png": "be76cd005c349058f5467f6db02e926e",
-"assets/NOTICES": "11f9b0d82b9fae2919c04db03a8e2ef6",
-"assets/AssetManifest.json": "fc9054c1b6e674cf84f58d520f249831",
-"assets/config.yaml": "d41d8cd98f00b204e9800998ecf8427e",
 "manifest.json": "84a2d5be7c1f5e2aedcd3768eb97976b",
-"icons/Icon-512.png": "bf339d3fdfa9ef3886676526ce6be437",
-"icons/Icon-192.png": "83f05c02e74b8647be59aadc185f6dd5"
+"favicon.png": "6d15f56b1da43113d3906761285d77dc",
+"index.html": "c09232260297f8eca4ab1876d5a0122d",
+"/": "c09232260297f8eca4ab1876d5a0122d",
+"version.json": "3bb6c18a962c0ceaf2e2d48929cf0913",
+"assets/AssetManifest.json": "53a26a2c98cf9bf49e18b3f436bafbbe",
+"assets/NOTICES": "4e1681f09010a3bd8a9b565436c9c9df",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "9a62a954b81a1ad45a58b9bcea89b50b",
+"assets/FontManifest.json": "07e3427b4fd6a4342b7e4a0134f43b17",
+"assets/assets/images/logo.png": "be76cd005c349058f5467f6db02e926e",
+"assets/assets/images/profile_picture.png": "30c2eee3275881c6e9518e2c8e8ec286",
+"assets/assets/fonts/Fira-Code/FiraCode-Regular.ttf": "1a77fe6d9f399212fcfcfde790ce66b2",
+"assets/assets/fonts/Fira-Code/FiraCode-Light.ttf": "137778879005023b427be30df1f57d83",
+"assets/assets/fonts/Fira-Code/FiraCode-Bold.ttf": "ea734aec73e961c5814b1b403c9b90c6",
+"assets/assets/fonts/Fira-Code/FiraCode-Medium.ttf": "e613bf534959b8c52533e77ea0cee44e",
+"assets/assets/fonts/AppIcons/AppIcons.ttf": "336760a14cea820ab7e830b606516390",
+"assets/assets/fonts/Product-Sans/Product-Sans-Bold-Italic.ttf": "79750b1d82b2558801373d62dd7e5280",
+"assets/assets/fonts/Product-Sans/Product-Sans-Bold.ttf": "dba0c688b8d5ee09a1e214aebd5d25e4",
+"assets/assets/fonts/Product-Sans/Product-Sans-Italic.ttf": "e88ec18827526928e71407a24937825a",
+"assets/assets/fonts/Product-Sans/Product-Sans-Regular.ttf": "eae9c18cee82a8a1a52e654911f8fe83",
+"assets/config.yaml": "d41d8cd98f00b204e9800998ecf8427e",
+"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
+"main.dart.js": "0acdaea6c92db64231fc7dff236f4531"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -39,13 +40,13 @@ const CORE = [
 "assets/NOTICES",
 "assets/AssetManifest.json",
 "assets/FontManifest.json"];
-
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
-      // Provide a no-cache param to ensure the latest version is downloaded.
-      return cache.addAll(CORE.map((value) => new Request(value, {'cache': 'no-cache'})));
+      return cache.addAll(
+        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
     })
   );
 });
@@ -60,7 +61,6 @@ self.addEventListener("activate", function(event) {
       var tempCache = await caches.open(TEMP);
       var manifestCache = await caches.open(MANIFEST);
       var manifest = await manifestCache.match('manifest');
-
       // When there is no prior manifest, clear the entire cache.
       if (!manifest) {
         await caches.delete(CACHE_NAME);
@@ -74,7 +74,6 @@ self.addEventListener("activate", function(event) {
         await manifestCache.put('manifest', new Response(JSON.stringify(RESOURCES)));
         return;
       }
-
       var oldManifest = await manifest.json();
       var origin = self.location.origin;
       for (var request of await contentCache.keys()) {
@@ -112,24 +111,33 @@ self.addEventListener("activate", function(event) {
 // The fetch handler redirects requests for RESOURCE files to the service
 // worker cache.
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== 'GET') {
+    return;
+  }
   var origin = self.location.origin;
   var key = event.request.url.substring(origin.length + 1);
   // Redirect URLs to the index.html
-  if (event.request.url == origin || event.request.url.startsWith(origin + '/#')) {
+  if (key.indexOf('?v=') != -1) {
+    key = key.split('?v=')[0];
+  }
+  if (event.request.url == origin || event.request.url.startsWith(origin + '/#') || key == '') {
     key = '/';
   }
-  // If the URL is not the RESOURCE list, skip the cache.
+  // If the URL is not the RESOURCE list then return to signal that the
+  // browser should take over.
   if (!RESOURCES[key]) {
-    return event.respondWith(fetch(event.request));
+    return;
+  }
+  // If the URL is the index.html, perform an online-first request.
+  if (key == '/') {
+    return onlineFirst(event);
   }
   event.respondWith(caches.open(CACHE_NAME)
     .then((cache) =>  {
       return cache.match(event.request).then((response) => {
         // Either respond with the cached resource, or perform a fetch and
-        // lazily populate the cache. Ensure the resources are not cached
-        // by the browser for longer than the service worker expects.
-        var modifiedRequest = new Request(event.request, {'cache': 'no-cache'});
-        return response || fetch(modifiedRequest).then((response) => {
+        // lazily populate the cache.
+        return response || fetch(event.request).then((response) => {
           cache.put(event.request, response.clone());
           return response;
         });
@@ -142,11 +150,12 @@ self.addEventListener('message', (event) => {
   // SkipWaiting can be used to immediately activate a waiting service worker.
   // This will also require a page refresh triggered by the main worker.
   if (event.data === 'skipWaiting') {
-    return self.skipWaiting();
+    self.skipWaiting();
+    return;
   }
-
-  if (event.message === 'downloadOffline') {
+  if (event.data === 'downloadOffline') {
     downloadOffline();
+    return;
   }
 });
 
@@ -169,4 +178,26 @@ async function downloadOffline() {
     }
   }
   return contentCache.addAll(resources);
+}
+
+// Attempt to download the resource online before falling back to
+// the offline cache.
+function onlineFirst(event) {
+  return event.respondWith(
+    fetch(event.request).then((response) => {
+      return caches.open(CACHE_NAME).then((cache) => {
+        cache.put(event.request, response.clone());
+        return response;
+      });
+    }).catch((error) => {
+      return caches.open(CACHE_NAME).then((cache) => {
+        return cache.match(event.request).then((response) => {
+          if (response != null) {
+            return response;
+          }
+          throw error;
+        });
+      });
+    })
+  );
 }
