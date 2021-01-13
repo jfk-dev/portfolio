@@ -295,22 +295,20 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
 
     for (var i = 0; i < _wavePhaseValues.length; i++) {
       paints.add(
-        Container(
-          child: CustomPaint(
-            painter: _CustomWavePainter(
-              color: colors == null ? null : colors[i],
-              gradient: gradients == null ? null : gradients[i],
-              gradientBegin: begin,
-              gradientEnd: end,
-              heightPercentage: config.heightPercentages[i],
-              repaint: _waveControllers[i],
-              waveFrequency: widget.waveFrequency,
-              wavePhaseValue: _wavePhaseValues[i],
-              waveAmplitude: _waveAmplitudes[i],
-              blur: config.blur,
-            ),
-            size: widget.size,
+        CustomPaint(
+          painter: _CustomWavePainter(
+            color: colors == null ? null : colors[i],
+            gradient: gradients == null ? null : gradients[i],
+            gradientBegin: begin,
+            gradientEnd: end,
+            heightPercentage: config.heightPercentages[i],
+            repaint: _waveControllers[i],
+            waveFrequency: widget.waveFrequency,
+            wavePhaseValue: _wavePhaseValues[i],
+            waveAmplitude: _waveAmplitudes[i],
+            blur: config.blur,
           ),
+          size: widget.size,
         ),
       );
     }
