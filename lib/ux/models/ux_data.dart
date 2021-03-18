@@ -34,9 +34,9 @@ const personalSocialMediaData = <ContentViewModel>[
   ),
   ContentViewModel(
     title: 'LinkedIn',
-    description: 'jeroen-meijer-ict',
+    description: 'jfkdev',
     icon: AppIcons.linkedin,
-    url: 'https://www.linkedin.com/in/jeroen-meijer-ict/',
+    url: 'https://www.linkedin.com/in/jfkdev/',
   ),
 ];
 
