@@ -6,7 +6,7 @@ const RESOURCES = {
   "manifest.json": "84a2d5be7c1f5e2aedcd3768eb97976b",
 "icons/Icon-192.png": "83f05c02e74b8647be59aadc185f6dd5",
 "icons/Icon-512.png": "bf339d3fdfa9ef3886676526ce6be437",
-"assets/NOTICES": "55b7be6a2fea3fb9f71d88d5207b8ef7",
+"assets/NOTICES": "fbf1bc405d385f44de6cd19ff9d02f20",
 "assets/assets/fonts/Fira-Code/FiraCode-Medium.ttf": "e613bf534959b8c52533e77ea0cee44e",
 "assets/assets/fonts/Fira-Code/FiraCode-Bold.ttf": "ea734aec73e961c5814b1b403c9b90c6",
 "assets/assets/fonts/Fira-Code/FiraCode-Light.ttf": "137778879005023b427be30df1f57d83",
@@ -23,9 +23,9 @@ const RESOURCES = {
 "assets/config.yaml": "d41d8cd98f00b204e9800998ecf8427e",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "9a62a954b81a1ad45a58b9bcea89b50b",
 "assets/FontManifest.json": "07e3427b4fd6a4342b7e4a0134f43b17",
-"index.html": "a550b0552eee81c4c493caa7cc5fe804",
-"/": "a550b0552eee81c4c493caa7cc5fe804",
-"main.dart.js": "88d19623ce9e2164aa8a923401d3a251",
+"index.html": "e15b66cac724d954b7723fc6b74eab17",
+"/": "e15b66cac724d954b7723fc6b74eab17",
+"main.dart.js": "ead2b3486fd585fbee64434aa04490c6",
 "CNAME": "c7ef0f287cf047ae5fd02de3415fab05",
 "version.json": "3bb6c18a962c0ceaf2e2d48929cf0913",
 "favicon.png": "6d15f56b1da43113d3906761285d77dc"
@@ -46,7 +46,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
