@@ -58,8 +58,7 @@ abstract class Localization {
   String get highlightSpeakerTitle => 'Speaker';
   String get highlightSpeakerDescription => 'Available for talks.';
 
-  String get businessInfo =>
-      'JFK.DEV ・ Pleinweg 142C, 3083EP, Rotterdam\nKVK: 74990241';
+  String get businessInfo => 'JFK.DEV ・ Rotterdam\nKVK: 74990241';
 
   @override
   int get hashCode => id.hashCode;
