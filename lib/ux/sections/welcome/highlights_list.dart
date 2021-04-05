@@ -8,8 +8,8 @@ import 'package:portfolio/ux/widgets/highlight_card.dart';
 
 class HighlightsList extends AnimatableStatefulWidget {
   const HighlightsList({
-    Key key,
-    Animation<double> animation,
+    Key? key,
+    Animation<double>? animation,
   }) : super(
           key: key,
           animation: animation,

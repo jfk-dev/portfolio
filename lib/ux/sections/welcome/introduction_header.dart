@@ -9,8 +9,8 @@ import 'package:portfolio/ux/widgets/animatable.dart';
 
 class IntroductionHeader extends AnimatableStatefulWidget {
   const IntroductionHeader({
-    Key key,
-    Animation<double> animation,
+    Key? key,
+    Animation<double>? animation,
   }) : super(
           key: key,
           animation: animation,
@@ -21,8 +21,8 @@ class IntroductionHeader extends AnimatableStatefulWidget {
 }
 
 class _IntroductionHeaderState extends AnimatableState<IntroductionHeader> {
-  Animation<double> _iconAnimation;
-  Animation<double> _titleAnimation;
+  late final Animation<double> _iconAnimation;
+  late final Animation<double> _titleAnimation;
 
   @override
   void initState() {

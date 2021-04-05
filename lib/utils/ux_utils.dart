@@ -2,7 +2,6 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:portfolio/app_localization.dart';
 import 'package:portfolio/theme.dart';
-import 'package:meta/meta.dart';
 
 // Functions
 String getGreetingForCurrentTime() {
@@ -18,18 +17,18 @@ String getGreetingForCurrentTime() {
 
 List<Animation<double>> divideAnimationAlongItems<T>(
   List<T> items, {
-  @required Animation<double> parent,
+  required Animation<double> parent,
   double overlapStart = 0.0,
   double overlapEnd = 0.0,
   Curve curve = AppTheme.animationCurveDefault,
 }) {
-  assert(parent != null, 'Parent animation cannot be null.');
   assert(
-      overlapStart >= 0.0 &&
-          overlapStart <= 1.0 &&
-          overlapEnd >= 0.0 &&
-          overlapEnd <= 1.0,
-      'Invalid overlap provided.');
+    overlapStart >= 0.0 &&
+        overlapStart <= 1.0 &&
+        overlapEnd >= 0.0 &&
+        overlapEnd <= 1.0,
+    'Invalid overlap provided.',
+  );
 
   final max = items.length;
   final unit = 1.0 / max;

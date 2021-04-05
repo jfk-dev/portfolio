@@ -12,7 +12,7 @@ Future<void> main() async {
 }
 
 class JfkDevApp extends StatelessWidget {
-  JfkDevApp({Config config}) {
+  JfkDevApp({required Config config}) {
     GetIt.instance.registerSingleton<Config>(config);
   }
 

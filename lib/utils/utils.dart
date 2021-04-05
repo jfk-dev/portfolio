@@ -19,20 +19,20 @@ Uri getCurrentUrl() {
 
 String getBrowserLanguage() {
   if (!js.context.hasProperty('navigator')) {
-    return null;
+    throw Exception();
   }
-  return js.context['navigator']['language'] as String ??
+  return js.context['navigator']['language'] as String? ??
       js.context['navigator']['userLanguage'] as String;
 }
 
 void openUrl(
   String url, {
-  Map<String, dynamic> queryParameters,
+  Map<String, dynamic>? queryParameters,
   bool openInNewTab = true,
 }) {
   var serializedQuery = '';
   if (queryParameters?.isNotEmpty ?? false) {
-    final parameters = queryParameters.entries.fold<String>(
+    final parameters = queryParameters!.entries.fold<String>(
       '',
       (query, entry) {
         return '$query'

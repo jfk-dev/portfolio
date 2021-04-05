@@ -5,8 +5,8 @@ import 'package:portfolio/ux/widgets/jfk_card.dart';
 
 class HighlightCard extends StatelessWidget {
   const HighlightCard({
-    Key key,
-    @required this.model,
+    Key? key,
+    required this.model,
   }) : super(key: key);
 
   final ContentViewModel model;
@@ -30,14 +30,14 @@ class HighlightCard extends StatelessWidget {
               children: <Widget>[
                 if (model.title != null)
                   Text(
-                    model.title,
+                    model.title!,
                     style: const TextStyle(
                       fontSize: 24.0,
                     ),
                   ),
                 if (model.description != null)
                   Text(
-                    model.description,
+                    model.description!,
                     style: const TextStyle(
                       color: AppTheme.colorTextSecondary,
                       fontSize: 16.0,

@@ -1,11 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:portfolio/app_localization.dart';
 import 'package:portfolio/utils/utils.dart';
-import 'package:meta/meta.dart';
 
 class Config {
   const Config._({
-    @required this.localization,
+    required this.localization,
   });
 
   static const fallback = Config._(
