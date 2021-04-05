@@ -71,10 +71,10 @@ class _LanguageSwitcherState extends State<LanguageSwitcher> {
 
 class _CollapsedView extends StatelessWidget {
   const _CollapsedView({
-    Key key,
-    @required this.localization,
+    Key? key,
+    required this.localization,
     this.padding = EdgeInsets.zero,
-    @required this.onTap,
+    required this.onTap,
   }) : super(key: key);
 
   final Localization localization;
@@ -103,11 +103,11 @@ class _CollapsedView extends StatelessWidget {
 
 class _ExpandedView extends StatelessWidget {
   const _ExpandedView({
-    Key key,
-    @required this.selectedLocalization,
-    @required this.localizations,
+    Key? key,
+    required this.selectedLocalization,
+    required this.localizations,
     this.padding = EdgeInsets.zero,
-    @required this.onTap,
+    required this.onTap,
   }) : super(key: key);
 
   final Localization selectedLocalization;
@@ -151,8 +151,8 @@ class _ExpandedView extends StatelessWidget {
 
 class _LocalizationTile extends StatelessWidget {
   const _LocalizationTile({
-    Key key,
-    @required this.localization,
+    Key? key,
+    required this.localization,
     this.showTitle = true,
   }) : super(key: key);
 
@@ -168,7 +168,12 @@ class _LocalizationTile extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(localization.icon),
+        Text(
+          localization.icon,
+          style: const TextStyle(
+            fontFamily: 'Arial',
+          ),
+        ),
         if (showTitle)
           Padding(
             padding: const EdgeInsets.all(8.0),

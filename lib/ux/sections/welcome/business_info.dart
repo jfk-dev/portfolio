@@ -6,8 +6,8 @@ import 'package:portfolio/ux/widgets/animatable.dart';
 
 class BusinessInfo extends AnimatableStatefulWidget {
   const BusinessInfo({
-    Key key,
-    Animation<double> animation,
+    Key? key,
+    Animation<double>? animation,
   }) : super(
           key: key,
           animation: animation,

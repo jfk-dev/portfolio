@@ -13,7 +13,7 @@ import 'package:portfolio/ux/widgets/widget_utils.dart';
 
 class WelcomeSection extends StatefulWidget {
   const WelcomeSection({
-    Key key,
+    Key? key,
     this.showDownArrow = true,
   }) : super(key: key);
 
@@ -30,13 +30,13 @@ class WelcomeSection extends StatefulWidget {
 
 class _WelcomeSectionState extends State<WelcomeSection>
     with SingleTickerProviderStateMixin {
-  AnimationController _baseAnimation;
-  Animation<double> _headerAnimation;
-  Animation<double> _wavesAnimation;
-  Animation<double> _highlightsAnimation;
-  Animation<double> _socialsAnimation;
-  Animation<double> _businessInfoAnimation;
-  Animation<double> _downArrowAnimation;
+  late final AnimationController _baseAnimation;
+  late final Animation<double> _headerAnimation;
+  late final Animation<double> _wavesAnimation;
+  late final Animation<double> _highlightsAnimation;
+  late final Animation<double> _socialsAnimation;
+  late final Animation<double> _businessInfoAnimation;
+  late final Animation<double> _downArrowAnimation;
 
   @override
   void initState() {
@@ -121,8 +121,8 @@ class _WelcomeSectionState extends State<WelcomeSection>
                     config: WaveConfigCustom(
                       gradients: [
                         [AppTheme.colorBackgroundPrimary, Colors.blue],
-                        [Colors.blue[800], Colors.blue[300]],
-                        [Colors.blue[900], AppTheme.colorBackgroundPrimary],
+                        [Colors.blue.shade800, Colors.blue.shade300],
+                        [Colors.blue.shade900, AppTheme.colorBackgroundPrimary],
                         [
                           AppTheme.colorDefaultGradientOne,
                           AppTheme.colorDefaultGradientTwo

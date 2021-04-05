@@ -5,19 +5,17 @@ import 'package:portfolio/ux/models/ux_models.dart';
 
 class JfkIconButton extends StatefulWidget {
   const JfkIconButton({
-    Key key,
-    @required this.model,
+    Key? key,
+    required this.model,
     this.size,
     this.color = Colors.white,
-    // this.showTitleOnHover = false,
     this.onTap,
   }) : super(key: key);
 
   final ContentViewModel model;
-  final double size;
+  final double? size;
   final Color color;
-  // final bool showTitleOnHover;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   _JfkIconButtonState createState() => _JfkIconButtonState();
@@ -28,12 +26,12 @@ class _JfkIconButtonState extends State<JfkIconButton> {
 
   void _onTap() {
     if (widget.onTap != null) {
-      widget.onTap();
+      widget.onTap!();
       return;
     }
 
     if (widget.model.url != null) {
-      openUrl(widget.model.url);
+      openUrl(widget.model.url!);
     }
   }
 

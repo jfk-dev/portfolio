@@ -6,8 +6,8 @@ import 'package:portfolio/ux/widgets/jfk_icon_button.dart';
 
 class SocialsRow extends AnimatableStatefulWidget {
   const SocialsRow({
-    Key key,
-    Animation<double> animation,
+    Key? key,
+    Animation<double>? animation,
   }) : super(
           key: key,
           animation: animation,

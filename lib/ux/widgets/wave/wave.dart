@@ -207,7 +207,7 @@ import 'package:portfolio/ux/widgets/wave/config.dart';
 
 class WaveWidget extends StatefulWidget {
   WaveWidget({
-    @required this.config,
+    required this.config,
     this.duration = 6000,
     this.waveAmplitude = 20.0,
     this.waveFrequency = 1.6,
@@ -225,19 +225,17 @@ class WaveWidget extends StatefulWidget {
   final double waveFrequency;
   final double heightPercentage;
   final int duration;
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   @override
   State<StatefulWidget> createState() => _WaveWidgetState();
 }
 
 class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
-  List<AnimationController> _waveControllers;
-  List<Animation<double>> _wavePhaseValues;
+  late final List<AnimationController> _waveControllers;
+  late final List<Animation<double>> _wavePhaseValues;
 
-  Map<Animation<double>, AnimationController> valueList;
-
-  final List<double> _waveAmplitudes = [];
+  final _waveAmplitudes = <double>[];
 
   @override
   void initState() {
@@ -339,14 +337,14 @@ class Layer {
     this.color,
     this.gradient,
     this.blur,
-    this.path,
-    this.amplitude,
-    this.phase,
+    required this.path,
+    required this.amplitude,
+    required this.phase,
   });
 
-  final Color color;
-  final List<Color> gradient;
-  final MaskFilter blur;
+  final Color? color;
+  final List<Color>? gradient;
+  final MaskFilter? blur;
   final Path path;
   final double amplitude;
   final double phase;
@@ -355,22 +353,22 @@ class Layer {
 class _CustomWavePainter extends CustomPainter {
   _CustomWavePainter({
     this.color,
-    this.gradient,
+    required this.gradient,
     this.gradientBegin,
     this.gradientEnd,
-    this.blur,
-    this.waveAmplitude,
-    this.wavePhaseValue,
-    this.waveFrequency,
-    this.heightPercentage,
-    Listenable repaint,
+    required this.blur,
+    required this.waveAmplitude,
+    required this.wavePhaseValue,
+    required this.waveFrequency,
+    required this.heightPercentage,
+    required Listenable repaint,
   }) : super(repaint: repaint);
 
-  final Color color;
-  final List<Color> gradient;
-  final Alignment gradientBegin;
-  final Alignment gradientEnd;
-  final MaskFilter blur;
+  final Color? color;
+  final List<Color>? gradient;
+  final Alignment? gradientBegin;
+  final Alignment? gradientEnd;
+  final MaskFilter? blur;
   final double waveAmplitude;
   final Animation<double> wavePhaseValue;
   final double waveFrequency;
@@ -409,7 +407,7 @@ class _CustomWavePainter extends CustomPainter {
     _layer.path.lineTo(0.0, size.height);
     _layer.path.close();
     if (_layer.color != null) {
-      _paint.color = _layer.color;
+      _paint.color = _layer.color!;
     }
     if (_layer.gradient != null) {
       final rect = Offset.zero &
@@ -417,7 +415,7 @@ class _CustomWavePainter extends CustomPainter {
       _paint.shader = LinearGradient(
         begin: gradientBegin ?? Alignment.bottomCenter,
         end: gradientEnd ?? Alignment.topCenter,
-        colors: _layer.gradient,
+        colors: _layer.gradient!,
       ).createShader(rect);
     }
     if (_layer.blur != null) {

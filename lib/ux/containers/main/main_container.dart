@@ -10,15 +10,10 @@ class MainContainer extends StatefulWidget {
 
 class _MainContainerState extends State<MainContainer>
     with SingleTickerProviderStateMixin {
-  final ScrollController _scrollController = ScrollController();
+  final _scrollController = ScrollController();
 
-  AnimationController _overlayAnimation;
-  Animation<double> _languageSwitcherAnimation;
-
-  // bool _isScrolledToTop = true;
-
-  // double get _amountOfPagesScrolled =>
-  //     _scrollController.hasClients ? _scrollController.offset / MediaQuery.of(context).size.height : 0;
+  late final AnimationController _overlayAnimation;
+  late final Animation<double> _languageSwitcherAnimation;
 
   @override
   void initState() {
