@@ -1,32 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/main_container/main_container.dart';
 import 'package:portfolio/theme/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const PortfolioApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PortfolioApp extends StatelessWidget {
+  const PortfolioApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: PortfolioTheme.light(),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Test'),
-      ),
+      home: const MainContainer(),
     );
   }
 }
