@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/theme/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -93,13 +94,12 @@ class AnimatedLogo extends StatelessWidget {
       curve: Curves.elasticOut,
       left: logoOffset.dx,
       top: logoOffset.dy,
-      child: Container(
-        width: logoWidth,
-        height: logoHeight,
+      child: Padding(
         padding: const EdgeInsets.all(8),
-        child: FlutterLogo(
-          style: FlutterLogoStyle.stacked,
-          textColor: Theme.of(context).customColors.pink,
+        child: Image.asset(
+          Images.logo,
+          width: logoWidth,
+          height: logoHeight,
         ),
       ),
     );
