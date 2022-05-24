@@ -8,16 +8,18 @@ class PageSections extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    final colors = List.filled(3, [Colors.white, Colors.grey]).expand((e) => e);
+
     return ListView(
       controller: context.read<ScrollController>(),
       children: [
-        for (final color in Colors.primaries)
+        for (var i = 0; i < colors.length; i++)
           SizedBox.fromSize(
             size: size,
             child: ColoredBox(
-              color: color.withOpacity(0.7),
+              color: colors.elementAt(i),
               child: Center(
-                child: Text('${Colors.primaries.indexOf(color) + 1}'),
+                child: Text('${i + 1}'),
               ),
             ),
           ),
