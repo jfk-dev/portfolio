@@ -41,7 +41,7 @@ class _ScaleButtonState extends State<ScaleButton> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      cursor: _isEnabled ? SystemMouseCursors.click : MouseCursor.defer,
+      cursor: _isEnabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
       child: GestureDetector(
         onTapDown: _isEnabled ? _onTapDown : null,
         onTapUp: _isEnabled ? _onTapUp : null,
