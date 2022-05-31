@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/hud_overlay/hud_overlay.dart';
+import 'package:portfolio/hud/hud.dart';
 import 'package:portfolio/page_sections/page_sections.dart';
 import 'package:portfolio/scroll_provider/scroll_provider.dart';
 

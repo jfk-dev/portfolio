@@ -15,8 +15,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  font_awesome_flutter: 10.1.0
   google_fonts: ^3.0.1
   provider: 6.0.3
+  url_launcher: 6.1.2
+  wave: 0.2.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -29,3 +32,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+  fonts:
+    - family: CustomIcons
+      fonts:
+        - asset: assets/fonts/CustomIcons.ttf

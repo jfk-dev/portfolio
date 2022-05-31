@@ -13,7 +13,7 @@ class PortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: PortfolioTheme.light(),
+      theme: PortfolioTheme.dark(),
       home: const MainContainer(),
     );
   }

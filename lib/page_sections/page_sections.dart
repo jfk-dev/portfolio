@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/page_sections/wave_wallpaper.dart';
+import 'package:portfolio/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 class PageSections extends StatelessWidget {
@@ -7,19 +9,27 @@ class PageSections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final customColors = Theme.of(context).customColors;
 
-    final colors = List.filled(3, [Colors.white, Colors.grey]).expand((e) => e);
+    final colors = List.filled(3, [
+      customColors.purpleSecondary,
+      customColors.pinkSecondary,
+      customColors.blueSecondary,
+    ]).expand((e) => e);
 
     return ListView(
       controller: context.read<ScrollController>(),
       children: [
+        const WaveWallpaper(),
         for (var i = 0; i < colors.length; i++)
-          SizedBox.fromSize(
-            size: size,
-            child: ColoredBox(
-              color: colors.elementAt(i),
-              child: Center(
-                child: Text('${i + 1}'),
+          Container(
+            width: size.width,
+            height: size.height,
+            color: colors.elementAt(i),
+            child: Center(
+              child: Text(
+                'Page ${i + 1}',
+                style: Theme.of(context).textTheme.displayMedium,
               ),
             ),
           ),
