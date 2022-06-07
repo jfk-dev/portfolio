@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/theme/theme.dart';
 
@@ -22,6 +23,11 @@ abstract class PortfolioTheme {
         CustomColors.dark(),
       ],
       textTheme: GoogleFonts.firaSansTextTheme(base.textTheme),
+      appBarTheme: base.appBarTheme.copyWith(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+        ),
+      ),
     );
   }
 }

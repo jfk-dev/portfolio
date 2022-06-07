@@ -16,10 +16,12 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: 10.1.0
+  gap: 2.0.0
   google_fonts: ^3.0.1
   provider: 6.0.3
   url_launcher: 6.1.2
-  wave: 0.2.0
+  wave:
+    path: packages/wave
 
 dev_dependencies:
   flutter_lints: ^2.0.0

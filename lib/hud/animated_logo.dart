@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/extensions/extensions.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/widgets.dart';
-import 'package:provider/provider.dart';
 
 class AnimatedLogo extends StatelessWidget {
   const AnimatedLogo({
@@ -28,17 +27,23 @@ class AnimatedLogo extends StatelessWidget {
   /// The alignment of the logo when collapsed to the top.
   static const _collapsedAlignment = Alignment.topLeft;
 
-  /// The height of the logo when fully expanded.
-  static const _expandedLogoHeight = 200.0;
+  /// The size of the logo when fully expanded.
+  static const _expandedLogoSize = Size.square(200);
 
-  /// The height of the logo when fully collapsed to the top.
-  static const _collapsedLogoHeight = 50.0;
+  /// The size of the logo when fully collapsed to the top.
+  static const _collapsedLogoSize = Size.square(50);
 
   @override
   Widget build(BuildContext context) {
     final offsetT = context.clampedPageScrolls(
       multiplier: 1 / _animationEndPoint,
     );
+
+    final logoSize = Size.lerp(
+      _expandedLogoSize,
+      _collapsedLogoSize,
+      offsetT,
+    )!;
 
     return AnimatedAlign(
       alignment: Alignment.lerp(
@@ -55,11 +60,8 @@ class AnimatedLogo extends StatelessWidget {
           onTap: onTapLogo,
           child: Image.asset(
             Images.logo,
-            height: lerpDouble(
-              _expandedLogoHeight,
-              _collapsedLogoHeight,
-              offsetT,
-            ),
+            width: logoSize.width,
+            height: logoSize.height,
           ),
         ),
       ),

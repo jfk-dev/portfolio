@@ -33,9 +33,9 @@ class WaveWallpaper extends StatelessWidget {
             0.7,
           ],
           durations: [
-            0,
+            1,
             10000,
-            21000,
+            15000,
           ],
         ),
       ),

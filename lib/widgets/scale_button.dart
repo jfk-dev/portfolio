@@ -49,11 +49,16 @@ class _ScaleButtonState extends State<ScaleButton> {
     });
   }
 
-  void _onExit(PointerExitEvent details) {
+  void _onExitOrCancel() {
     setState(() {
       _isHovering = false;
       _isPressed = false;
     });
+  }
+
+  void _onTap() {
+    widget.onTap!();
+    _onExitOrCancel();
   }
 
   @override
@@ -71,12 +76,13 @@ class _ScaleButtonState extends State<ScaleButton> {
 
     return MouseRegion(
       onHover: _onHover,
-      onExit: _onExit,
+      onExit: (_) => _onExitOrCancel(),
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTapDown: _onTapDown,
         onTapUp: _onTapUp,
-        onTap: widget.onTap,
+        onTapCancel: _onExitOrCancel,
+        onTap: _onTap,
         child: TweenAnimationBuilder<double>(
           tween: Tween(end: scaleFactor),
           curve: widget.curve,

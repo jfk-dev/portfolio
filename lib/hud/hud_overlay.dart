@@ -21,14 +21,16 @@ class HudOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AnimatedLogo(
-          onTapLogo:
-              _checkIsAtTopOfPage(context) ? null : () => _onTapLogo(context),
-        ),
-        const AnimatedSocialIcons(),
-      ],
+    return SafeArea(
+      child: Stack(
+        children: [
+          AnimatedLogo(
+            onTapLogo:
+                _checkIsAtTopOfPage(context) ? null : () => _onTapLogo(context),
+          ),
+          const AnimatedSocialIcons(),
+        ],
+      ),
     );
   }
 }
