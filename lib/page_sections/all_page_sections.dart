@@ -27,18 +27,27 @@ class PageSections extends StatelessWidget {
         for (var i = 0; i < colors.length; i++)
           Provider(
             create: (_) => PageSectionContext(pageIndex: i + 1),
-            child: Container(
-              width: size.width,
-              height: size.height,
-              color: colors.elementAt(i),
-              child: i == 0
-                  ? const IntroductionSection()
-                  : Center(
-                      child: Text(
-                        'Page ${i + 1}',
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
-                    ),
+            child: Column(
+              children: [
+                Container(
+                  width: size.width,
+                  height: size.height,
+                  color: colors.elementAt(i),
+                  child: i == 0
+                      ? const IntroductionSection()
+                      : Center(
+                          child: Text(
+                            'Page ${i + 1}',
+                            style: Theme.of(context).textTheme.displayMedium,
+                          ),
+                        ),
+                ),
+                if (i != colors.length - 1)
+                  WaveSectionTransition(
+                    fromColor: colors.elementAt(i),
+                    toColor: colors.elementAt(i + 1),
+                  ),
+              ],
             ),
           ),
       ],

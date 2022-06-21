@@ -3,10 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/extensions/extensions.dart';
-import 'package:portfolio/resources/custom_icons.dart';
 import 'package:portfolio/resources/resources.dart';
 import 'package:portfolio/widgets/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AnimatedSocialIcons extends StatelessWidget {

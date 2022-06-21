@@ -246,7 +246,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
   void _initAnimations() {
     if (widget.config.colorMode == ColorMode.custom) {
       _waveControllers =
-          (widget.config as CustomConfig).durations!.map((duration) {
+          (widget.config as CustomConfig).durations.map((duration) {
         _waveAmplitudes.add(widget.waveAmplitude + 10);
         return AnimationController(
           vsync: this,
@@ -306,7 +306,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
               gradientBegin: begin,
               gradientEnd: end,
               heightPercentage:
-                  (widget.config as CustomConfig).heightPercentages![i],
+                  (widget.config as CustomConfig).heightPercentages[i],
               repaint: _waveControllers[i],
               waveFrequency: widget.waveFrequency,
               wavePhaseValue: _wavePhaseValues[i],

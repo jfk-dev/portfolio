@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wave/config.dart';
@@ -30,30 +32,25 @@ void main() {
 
 Widget getWaveWidget({int? duration, bool isLoop = true}) {
   return MaterialApp(
-    home: Container(
-      child: WaveWidget(
-        backgroundColor: Colors.white,
-        config: CustomConfig(
-          blur: const MaskFilter.blur(
-            BlurStyle.solid,
-            0,
-          ),
-          colors: [
-            Colors.white54,
-            Colors.white30,
-            Colors.white,
-          ],
-          durations: [21000, 18000, 5000],
-          heightPercentages: [0.26, 0.28, 0.31],
+    home: WaveWidget(
+      backgroundColor: Colors.white,
+      config: CustomConfig(
+        blur: const MaskFilter.blur(
+          BlurStyle.solid,
+          0,
         ),
-        duration: duration,
-        isLoop: isLoop,
-        size: const Size(
-          double.infinity,
-          double.infinity,
-        ),
-        waveAmplitude: 5,
+        colors: [
+          Colors.white54,
+          Colors.white30,
+          Colors.white,
+        ],
+        durations: [21000, 18000, 5000],
+        heightPercentages: [0.26, 0.28, 0.31],
       ),
+      duration: duration,
+      isLoop: isLoop,
+      size: Size.infinite,
+      waveAmplitude: 5,
     ),
   );
 }

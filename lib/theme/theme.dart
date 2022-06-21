@@ -6,23 +6,20 @@ import 'package:portfolio/theme/theme.dart';
 export 'colors.dart';
 
 abstract class PortfolioTheme {
-  static ThemeData light() {
-    final base = ThemeData.light();
-    return base.copyWith(
-      extensions: const [
-        CustomColors.light(),
-      ],
-      textTheme: GoogleFonts.firaSansTextTheme(base.textTheme),
-    );
-  }
-
   static ThemeData dark() {
     final base = ThemeData.dark();
+    final baseTextTheme = GoogleFonts.firaSansTextTheme(base.textTheme);
+
     return base.copyWith(
       extensions: const [
         CustomColors.dark(),
       ],
-      textTheme: GoogleFonts.firaSansTextTheme(base.textTheme),
+      textTheme: baseTextTheme.copyWith(
+        headlineLarge: baseTextTheme.headlineLarge!.copyWith(
+          fontWeight: FontWeight.w600,
+          color: baseTextTheme.headlineLarge!.color!.withOpacity(1),
+        ),
+      ),
       appBarTheme: base.appBarTheme.copyWith(
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Colors.white,

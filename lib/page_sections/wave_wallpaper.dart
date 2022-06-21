@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/extensions/extensions.dart';
 import 'package:portfolio/theme/theme.dart';
-import 'package:provider/provider.dart';
 import 'package:wave/config.dart' as wave;
 import 'package:wave/wave.dart';
 
