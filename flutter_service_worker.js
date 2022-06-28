@@ -3,39 +3,39 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "CNAME": "c7ef0f287cf047ae5fd02de3415fab05",
-"icons/Icon-512.png": "bf339d3fdfa9ef3886676526ce6be437",
-"icons/Icon-192.png": "83f05c02e74b8647be59aadc185f6dd5",
-"favicon.png": "6d15f56b1da43113d3906761285d77dc",
-"manifest.json": "84a2d5be7c1f5e2aedcd3768eb97976b",
-"index.html": "9df1123bbe641df2de090538e31a7e38",
-"/": "9df1123bbe641df2de090538e31a7e38",
-"assets/config.yaml": "d41d8cd98f00b204e9800998ecf8427e",
+  "favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
+"canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
+"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
+"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
+"index.html": "bdf50c71e64871353f2ecec88195a474",
+"/": "bdf50c71e64871353f2ecec88195a474",
+"flutter.js": "0816e65a103ba8ba51b174eeeeb2cb67",
+"icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
+"icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
+"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
+"icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
+"manifest.json": "d40c47d1c161f94dbcb13094d37f1f55",
+"version.json": "009c9e65172e010890f7f65fde438006",
+"assets/FontManifest.json": "42e8fda0da2fcc5022da9431e339b506",
+"assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
+"assets/AssetManifest.json": "d9f9e3abd859e13575710a991f380681",
+"assets/assets/images/jay1.jpeg": "fd0fdb36e042be7e60f561b02d5fe845",
+"assets/assets/images/dj.gif": "262bffaa135375d5b1ce2ede311ae4cc",
+"assets/assets/images/logo.png": "f9033e3412fd9ed8b8ad7980063dc0ff",
+"assets/assets/fonts/CustomIcons.ttf": "779b340ab64bdce2d1277ca905053e49",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/NOTICES": "9977fff1528097452517129e8eaa9d74",
-"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"assets/AssetManifest.json": "53a26a2c98cf9bf49e18b3f436bafbbe",
-"assets/assets/images/logo.png": "be76cd005c349058f5467f6db02e926e",
-"assets/assets/images/profile_picture.png": "30c2eee3275881c6e9518e2c8e8ec286",
-"assets/assets/fonts/Product-Sans/Product-Sans-Italic.ttf": "e88ec18827526928e71407a24937825a",
-"assets/assets/fonts/Product-Sans/Product-Sans-Bold-Italic.ttf": "79750b1d82b2558801373d62dd7e5280",
-"assets/assets/fonts/Product-Sans/Product-Sans-Bold.ttf": "dba0c688b8d5ee09a1e214aebd5d25e4",
-"assets/assets/fonts/Product-Sans/Product-Sans-Regular.ttf": "eae9c18cee82a8a1a52e654911f8fe83",
-"assets/assets/fonts/AppIcons/AppIcons.ttf": "336760a14cea820ab7e830b606516390",
-"assets/assets/fonts/Fira-Code/FiraCode-Medium.ttf": "e613bf534959b8c52533e77ea0cee44e",
-"assets/assets/fonts/Fira-Code/FiraCode-Bold.ttf": "ea734aec73e961c5814b1b403c9b90c6",
-"assets/assets/fonts/Fira-Code/FiraCode-Regular.ttf": "1a77fe6d9f399212fcfcfde790ce66b2",
-"assets/assets/fonts/Fira-Code/FiraCode-Light.ttf": "137778879005023b427be30df1f57d83",
-"assets/FontManifest.json": "07e3427b4fd6a4342b7e4a0134f43b17",
-"main.dart.js": "5f3209367f3301912ec234aeca983388",
-"version.json": "ce66a41620708cd6f592935627ff2f08"
+"assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "613e4cc1af0eb5148b8ce409ad35446d",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "dd3c4233029270506ecc994d67785a37",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "d1722d5cf2c7855862f68edb85e31f88",
+"assets/NOTICES": "17a983d76b1e1464f230bc993cd1008c",
+"main.dart.js": "267fb89f033440d1d8bda6ccffe587a0"
 };
 
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "/",
-"main.dart.js",
+  "main.dart.js",
 "index.html",
 "assets/NOTICES",
 "assets/AssetManifest.json",
@@ -46,7 +46,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
