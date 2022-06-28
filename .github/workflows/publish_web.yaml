@@ -1,8 +1,10 @@
-name: Publish Web
+name: Publish Web (New)
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
+      - revamp
 
 jobs:
   publish_web:
