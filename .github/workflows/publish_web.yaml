@@ -1,0 +1,44 @@
+name: Publish Web
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish_web:
+    runs-on: ubuntu-latest
+    env:
+      BUILD_DIR: ./build/web/
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          channel: stable
+          flutter-version: 3.0.0
+
+      - name: Install app dependencies
+        run: flutter pub get
+
+      - name: Build
+        run: flutter build web --release --web-renderer html
+
+      - name: Copy CNAME
+        run: cp CNAME ${{ env.BUILD_DIR }}
+
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.BUILD_DIR }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        continue-on-error: true
+        with:
+          name: web_build
+          path: ${{ env.BUILD_DIR }}

@@ -3,7 +3,7 @@ import 'package:portfolio/extensions/extensions.dart';
 import 'package:portfolio/page_sections/page_sections.dart';
 import 'package:provider/provider.dart';
 
-/// Extensions on [double] for convenience.
+/// Extensions on [BuildContext] for convenience.
 extension BuildContextExtensions on BuildContext {
   /// Subscribes to and  returns a scaled clamp of the current context's
   /// [ScrollController]'s full page scrolls.

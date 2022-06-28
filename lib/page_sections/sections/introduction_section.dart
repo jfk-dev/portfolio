@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/extensions/extensions.dart';
 import 'package:portfolio/page_sections/page_sections.dart';
 import 'package:portfolio/widgets/widgets.dart';
 // import 'package:provider/provider.dart';
@@ -10,17 +11,30 @@ class IntroductionSection extends StatelessWidget {
   Widget build(BuildContext context) {
     // final pageContext = context.watch<PageSectionContext>();
 
-    // cspell:disable
-    return const SectionLayout(
-      title: Text(
-        '''
-Hi. 👋🏻 I'm Jay. I love music, technology and Japan.''',
+    final currentDate = DateTime.now();
+
+    final birthDate = DateTime(1998, 07, 20);
+    final age = birthDate.differenceInYears(currentDate);
+
+    final startDateDev = DateTime(2019, 06);
+    final yearsDevelopingApps = startDateDev.differenceInYears(currentDate);
+
+    return SectionLayout(
+      title: const Text("Hi! 👋🏻 I'm Jay."),
+      subtitle: Text(
+        'A $age year old software developer in love with music, '
+        'technology and Japan.',
       ),
       body: Text(
-        // ignore: lines_longer_than_80_chars
-        'Sunt dolore eu cillum amet esse proident. Sunt dolore eu cillum amet esse proident. Sunt dolore eu cillum amet esse proident. Ipsum in cupidatat aute ad. Commodo dolor anim ut irure eiusmod dolore eu et labore laboris. Cillum exercitation nisi sint ullamco excepteur ullamco ad id eiusmod exercitation occaecat anim exercitation non. Sit enim ad elit dolore sit sit. Occaecat fugiat excepteur adipisicing ex commodo id. Sit irure culpa est reprehenderit commodo nisi ad do sit ea enim. Qui dolor occaecat nulla aliqua reprehenderit ea sunt aliquip nulla. Ipsum anim non proident deserunt qui reprehenderit deserunt culpa consectetur ullamco commodo cupidatat mollit laborum.',
+        '''
+Fascinated by computers since I was 8 years old, I've been studying and experimenting with all kinds of devices for as long as I can remember.
+
+I have a passion for creating experiences that enrich people's lives, or simply makes somebody's day a bit better. I've been doing so as an app developer for more than $yearsDevelopingApps years.''',
       ),
-      content: ExampleImage(),
+      content: RoundedBox(
+        fit: BoxFit.cover,
+        child: Image.asset('assets/images/jay1.jpeg'),
+      ),
     );
   }
 }

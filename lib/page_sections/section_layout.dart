@@ -1,22 +1,26 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:portfolio/extensions/extensions.dart';
 
-enum SectionAlignment { left, right }
+enum SectionAlignment { bodyLeft, bodyRight }
 
 class SectionLayout extends StatelessWidget {
   const SectionLayout({
     super.key,
-    this.alignment = SectionAlignment.left,
+    this.alignment = SectionAlignment.bodyLeft,
     required this.title,
+    required this.subtitle,
     required this.body,
-    required this.content,
+    this.content,
   });
 
   final SectionAlignment alignment;
   final Widget title;
+  final Widget subtitle;
   final Widget body;
-  final Widget content;
+  final Widget? content;
 
   static const _overallSpacing = 16.0;
 
@@ -26,8 +30,10 @@ class SectionLayout extends StatelessWidget {
     final isMobile = mediaQuery.size.width < 700;
 
     final effectiveTitle = _SectionTitle(child: title);
+    final effectiveSubtitle = _SectionSubtitle(child: subtitle);
     final effectiveBody = _SectionBody(child: body);
-    final effectiveContent = _SectionContent(child: content);
+    final effectiveContent =
+        content == null ? null : _SectionContent(child: content!);
 
     if (isMobile) {
       return Padding(
@@ -37,11 +43,16 @@ class SectionLayout extends StatelessWidget {
           children: [
             effectiveTitle,
             const Gap(_overallSpacing),
-            effectiveBody,
+            effectiveSubtitle,
             const Gap(_overallSpacing),
-            Expanded(
-              child: effectiveContent,
-            ),
+            effectiveBody,
+            if (effectiveContent != null) ...[
+              const Gap(_overallSpacing),
+              Expanded(
+                child: effectiveContent,
+              ),
+            ] else
+              const Spacer(),
             const Gap(128),
           ],
         ),
@@ -50,9 +61,11 @@ class SectionLayout extends StatelessWidget {
       final leftSide = Expanded(
         child: effectiveBody,
       );
-      final rightSide = Expanded(
-        child: effectiveContent,
-      );
+      final rightSide = effectiveContent == null
+          ? null
+          : Expanded(
+              child: effectiveContent,
+            );
 
       return Padding(
         padding: const EdgeInsets.all(_overallSpacing),
@@ -61,22 +74,28 @@ class SectionLayout extends StatelessWidget {
           children: [
             effectiveTitle,
             const Gap(_overallSpacing),
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (alignment == SectionAlignment.left)
-                    leftSide
-                  else
-                    rightSide,
-                  const Gap(_overallSpacing * 2),
-                  if (alignment == SectionAlignment.left)
-                    rightSide
-                  else
-                    leftSide,
-                ],
+            effectiveSubtitle,
+            const Gap(_overallSpacing),
+            if (rightSide == null)
+              leftSide
+            else
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (alignment == SectionAlignment.bodyLeft)
+                      leftSide
+                    else
+                      rightSide,
+                    const Gap(_overallSpacing * 2),
+                    if (alignment == SectionAlignment.bodyLeft)
+                      rightSide
+                    else
+                      leftSide,
+                  ],
+                ),
               ),
-            ),
+            const Gap(128),
           ],
         ),
       );
@@ -92,14 +111,36 @@ class _SectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final offsetT = context.clampedPageScrolls(
-      offset: -0.9,
-      multiplier: 2,
+      offset: -0.8,
+      multiplier: 5,
     );
 
     return SlideAndFade(
       offsetT: offsetT,
       child: DefaultTextStyle.merge(
         style: Theme.of(context).textTheme.headlineLarge,
+        child: child,
+      ),
+    );
+  }
+}
+
+class _SectionSubtitle extends StatelessWidget {
+  const _SectionSubtitle({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final offsetT = context.clampedPageScrolls(
+      offset: -0.7,
+      multiplier: 5,
+    );
+
+    return SlideAndFade(
+      offsetT: offsetT,
+      child: DefaultTextStyle.merge(
+        style: Theme.of(context).textTheme.headlineMedium,
         child: child,
       ),
     );
@@ -114,8 +155,8 @@ class _SectionBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final offsetT = context.clampedPageScrolls(
-      offset: -0.8,
-      multiplier: 2,
+      offset: -0.6,
+      multiplier: 5,
     );
 
     return SlideAndFade(
@@ -137,15 +178,21 @@ class _SectionContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final offsetT = context.clampedPageScrolls(
-      offset: -0.7,
-      multiplier: 2,
+      offset: -0.5,
+      multiplier: 5,
     );
+
+    final size = MediaQuery.of(context).size;
 
     return SlideAndFade(
       offsetT: offsetT,
       child: DefaultTextStyle.merge(
         style: Theme.of(context).textTheme.bodyLarge,
-        child: child,
+        child: SizedBox(
+          width: double.infinity,
+          height: min(700, size.height),
+          child: child,
+        ),
       ),
     );
   }

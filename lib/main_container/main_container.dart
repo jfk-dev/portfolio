@@ -15,7 +15,7 @@ class MainContainer extends StatelessWidget {
           backgroundColor: Theme.of(context).customColors.pink,
           body: Stack(
             children: const [
-              PageSections(),
+              AllPageSections(),
               HudOverlay(),
             ],
           ),
