@@ -13,8 +13,8 @@ class MainContainer extends StatelessWidget {
       builder: (context) {
         return Scaffold(
           backgroundColor: Theme.of(context).customColors.pink,
-          body: Stack(
-            children: const [
+          body: const Stack(
+            children: [
               AllPageSections(),
               HudOverlay(),
             ],

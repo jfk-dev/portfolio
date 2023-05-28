@@ -68,9 +68,9 @@ class AnimatedSocialIcons extends StatelessWidget {
                 offsetT,
               ),
             ),
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
+              children: [
                 UrlButton(
                   url: Urls.twitter,
                   child: Icon(
@@ -99,12 +99,6 @@ class AnimatedSocialIcons extends StatelessWidget {
                   url: Urls.gde,
                   child: Icon(
                     FontAwesomeIcons.google,
-                  ),
-                ),
-                UrlButton(
-                  url: Urls.vgv,
-                  child: Icon(
-                    CustomIcons.vgvUnicorn,
                   ),
                 ),
               ],

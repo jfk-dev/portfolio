@@ -19,12 +19,14 @@ class AllPageSections extends StatelessWidget {
       customColors.pinkSecondary,
     ];
 
-    const sections = [
-      IntroductionSection(),
-      AppDevSection(),
-      VgvSection(),
-      MusicSection(),
-      ContactSection(),
+    // FIXME: Temporarily disabling all sections below the top one (landing)
+    // as they are fugly :)
+    const sections = <Widget>[
+      // IntroductionSection(),
+      // AppDevSection(),
+      // VgvSection(),
+      // MusicSection(),
+      // ContactSection(),
     ];
 
     return ListView(
